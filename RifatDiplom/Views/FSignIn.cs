@@ -22,7 +22,7 @@ namespace RifatDiplom
         private void bsubmit_Click(object sender, EventArgs e)
         {
             DataTable dataTable = new DataTable();
-            using (SqlConnection connection = new SqlConnection(Properties.Settings.Default.DispetcherConnect))
+            using (SqlConnection connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\projects\RifatDiplom\RifatDiplom\Data\DispatcherData.mdf;Integrated Security=True"))
             {
                 string sql = "SELECT * FROM LoginTable WHERE Login = @uL AND Password = @uP";
                 using (SqlCommand sqlCommand = new SqlCommand(sql, connection))

@@ -33,8 +33,6 @@ namespace RifatDiplom
                 NewOrder.PointB = tbTo.Text;
                 NewOrder.Price = GetPrice();
                 NewOrder.IdDrivers = (int)cbDrivers.SelectedValue;
-                DData(NewOrder);
-                this.Close();
             }
         }
 

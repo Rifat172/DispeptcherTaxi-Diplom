@@ -22,38 +22,5 @@ namespace RifatDiplom.Properties {
                 return defaultInstance;
             }
         }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=D:\\projects\\RifatDiplom\\Rifat" +
-            "Diplom\\Data\\DispatcherData.mdf;Integrated Security=True")]
-        public string DispetcherConnect {
-            get {
-                return ((string)(this["DispetcherConnect"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\Data\\OrderDat" +
-            "a.mdf;Integrated Security=True")]
-        public string OrderDataConnectionString {
-            get {
-                return ((string)(this["OrderDataConnectionString"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=D:\\projects\\RifatDiplom\\Rifat" +
-            "Diplom\\bin\\Release\\Data\\OrderData.mdf;Integrated Security=True")]
-        public string OrderConnect {
-            get {
-                return ((string)(this["OrderConnect"]));
-            }
-        }
     }
 }

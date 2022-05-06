@@ -60,10 +60,11 @@ namespace RifatDiplom
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::RifatDiplom.Properties.Resources.taxi_icon_144089_2_;
+            this.pictureBox1.Image = global::RifatDiplom.Properties.Resources.taxi_png_white;
             this.pictureBox1.Location = new System.Drawing.Point(429, 22);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(133, 109);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 

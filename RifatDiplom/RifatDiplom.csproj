@@ -62,25 +62,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\NewOrderClass.cs" />
-    <Compile Include="OrderDataDataSet.Designer.cs">
+    <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>OrderDataDataSet.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="OrderDataDataSet1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>OrderDataDataSet1.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="OrderDataDataSet2.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>OrderDataDataSet2.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="OrderDataDataSet3.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>OrderDataDataSet3.xsd</DependentUpon>
+      <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Views\FAddOrder.cs">
       <SubType>Form</SubType>
@@ -122,58 +107,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <None Include="OrderDataDataSet.xsc">
-      <DependentUpon>OrderDataDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="OrderDataDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>OrderDataDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="OrderDataDataSet.xss">
-      <DependentUpon>OrderDataDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="OrderDataDataSet1.xsc">
-      <DependentUpon>OrderDataDataSet1.xsd</DependentUpon>
-    </None>
-    <None Include="OrderDataDataSet1.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>OrderDataDataSet1.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="OrderDataDataSet1.xss">
-      <DependentUpon>OrderDataDataSet1.xsd</DependentUpon>
-    </None>
-    <None Include="OrderDataDataSet2.xsc">
-      <DependentUpon>OrderDataDataSet2.xsd</DependentUpon>
-    </None>
-    <None Include="OrderDataDataSet2.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>OrderDataDataSet2.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="OrderDataDataSet2.xss">
-      <DependentUpon>OrderDataDataSet2.xsd</DependentUpon>
-    </None>
-    <None Include="OrderDataDataSet3.xsc">
-      <DependentUpon>OrderDataDataSet3.xsd</DependentUpon>
-    </None>
-    <None Include="OrderDataDataSet3.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>OrderDataDataSet3.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="OrderDataDataSet3.xss">
-      <DependentUpon>OrderDataDataSet3.xsd</DependentUpon>
-    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -188,9 +124,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\taxi_icon_144089%281%29.png" />
-    <None Include="Resources\taxi_icon_144089.png" />
-    <None Include="Resources\taxi_icon_144089%282%29.png" />
     <Content Include="Data\DispatcherData.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -205,7 +138,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>OrderData.mdf</DependentUpon>
     </Content>
-    <Content Include="Resources\taxi_icon_144089.ico" />
+    <None Include="Resources\taxi_png_white.png" />
+    <None Include="Resources\taxi_icon_white.ico" />
+    <None Include="Resources\taxi_icon.ico" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">

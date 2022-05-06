@@ -61,31 +61,31 @@ namespace RifatDiplom.Properties {
         }
         
         /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        ///   Поиск локализованного ресурса типа System.Drawing.Icon, аналогичного (Значок).
         /// </summary>
-        internal static System.Drawing.Bitmap taxi_icon_144089 {
+        internal static System.Drawing.Icon taxi_icon {
             get {
-                object obj = ResourceManager.GetObject("taxi_icon_144089", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                object obj = ResourceManager.GetObject("taxi_icon", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Icon, аналогичного (Значок).
+        /// </summary>
+        internal static System.Drawing.Icon taxi_icon_white {
+            get {
+                object obj = ResourceManager.GetObject("taxi_icon_white", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
             }
         }
         
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap taxi_icon_144089_1_ {
+        internal static System.Drawing.Bitmap taxi_png_white {
             get {
-                object obj = ResourceManager.GetObject("taxi_icon_144089(1)", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap taxi_icon_144089_2_ {
-            get {
-                object obj = ResourceManager.GetObject("taxi_icon_144089(2)", resourceCulture);
+                object obj = ResourceManager.GetObject("taxi_png_white", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
