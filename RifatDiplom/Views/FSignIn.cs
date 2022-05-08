@@ -8,23 +8,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using RifatDiplom.Model;
 
 namespace RifatDiplom
 {
     public partial class FSignIn : Form
     {
+        object Status;
         bool IsAdmin = false;
         public FSignIn()
         {
             InitializeComponent();
         }
-
         private void bsubmit_Click(object sender, EventArgs e)
         {
-            DataTable dataTable = new DataTable();
-            using (SqlConnection connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\projects\RifatDiplom\RifatDiplom\Data\DispatcherData.mdf;Integrated Security=True"))
+            using (SqlConnection connection = new SqlConnection(Properties.Settings.Default.DispatcherConn))
             {
-                string sql = "SELECT * FROM LoginTable WHERE Login = @uL AND Password = @uP";
+                string sql = "SELECT L.Id, L.Login, L.Password, D.Status FROM LoginTable as L inner join DispatcherTableData as D ON L.Id = D.Id WHERE L.Login = @uL AND L.Password = @uP";
                 using (SqlCommand sqlCommand = new SqlCommand(sql, connection))
                 {
                     sqlCommand.Parameters.Add(new SqlParameter("@uL", SqlDbType.NVarChar, 25));
@@ -37,17 +37,18 @@ namespace RifatDiplom
                         connection.Open();
                         using (SqlDataReader dataReader = sqlCommand.ExecuteReader())
                         {
-                            if(!dataReader.HasRows)
+                            if (!dataReader.HasRows)
                             {
                                 label2.Visible = true;
                                 return;
                             }
-                            dataTable.Load(dataReader);
+                            dataReader.Read();
+                            Status = dataReader["Status"];
                             dataReader.Close();
                         }
                     }
                     catch (Exception ex)
-                    {
+                    { 
                         MessageBox.Show(ex.ToString());
                     }
                     finally
@@ -57,7 +58,7 @@ namespace RifatDiplom
                     }
                 }
             }
-            IsAdmin = dataTable.Rows[0].ItemArray[3].ToString() == "adm" ? true : false;
+            IsAdmin = Status.ToString() == "admin" ? true : false;
             Form enter = new FMain(IsAdmin);
             enter.Show();
             this.Hide();

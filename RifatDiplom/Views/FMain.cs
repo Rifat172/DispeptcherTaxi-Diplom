@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using RifatDiplom.Model;
+using RifatDiplom.Model.Driver;
 
 namespace RifatDiplom
 {
@@ -60,6 +60,12 @@ namespace RifatDiplom
         }
         #endregion
 
+        private void выйтиToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Form SignIn = new FSignIn();
+            SignIn.Show();
+            this.Hide();
+        }
         private void добавитьПользователяToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form signup = new FSignUp();
@@ -134,5 +140,18 @@ namespace RifatDiplom
             }
         }
         #endregion
+
+        private void FMain_Load(object sender, EventArgs e)
+        {
+            LoadData();
+        }
+
+        private void LoadData()
+        {
+            using(DriversContext db = new DriversContext())
+            {
+                var a = db.Drivers.Include("DriverStatus");
+            }
+        }
     }
 }
