@@ -32,10 +32,13 @@ namespace RifatDiplom
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FMain));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.фаилToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.пользовательToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.выйтиToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.ListDrivers = new System.Windows.Forms.ToolStripMenuItem();
             this.ListOrder = new System.Windows.Forms.ToolStripMenuItem();
             this.выйтиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -61,8 +64,6 @@ namespace RifatDiplom
             this.dCar = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dPevenue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cbStatus = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.пользовательToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.выйтиToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -98,12 +99,27 @@ namespace RifatDiplom
             this.фаилToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
             this.фаилToolStripMenuItem.Text = "Фаил";
             // 
+            // пользовательToolStripMenuItem
+            // 
+            this.пользовательToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.выйтиToolStripMenuItem1});
+            this.пользовательToolStripMenuItem.Name = "пользовательToolStripMenuItem";
+            this.пользовательToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
+            this.пользовательToolStripMenuItem.Text = "Пользователь";
+            // 
+            // выйтиToolStripMenuItem1
+            // 
+            this.выйтиToolStripMenuItem1.Name = "выйтиToolStripMenuItem1";
+            this.выйтиToolStripMenuItem1.Size = new System.Drawing.Size(109, 22);
+            this.выйтиToolStripMenuItem1.Text = "Выйти";
+            this.выйтиToolStripMenuItem1.Click += new System.EventHandler(this.выйтиToolStripMenuItem1_Click);
+            // 
             // ListDrivers
             // 
             this.ListDrivers.Checked = true;
             this.ListDrivers.CheckState = System.Windows.Forms.CheckState.Checked;
             this.ListDrivers.Name = "ListDrivers";
-            this.ListDrivers.Size = new System.Drawing.Size(180, 22);
+            this.ListDrivers.Size = new System.Drawing.Size(175, 22);
             this.ListDrivers.Text = "Список водителей";
             this.ListDrivers.Click += new System.EventHandler(this.ListDrivers_Click);
             // 
@@ -112,14 +128,14 @@ namespace RifatDiplom
             this.ListOrder.Checked = true;
             this.ListOrder.CheckState = System.Windows.Forms.CheckState.Checked;
             this.ListOrder.Name = "ListOrder";
-            this.ListOrder.Size = new System.Drawing.Size(180, 22);
+            this.ListOrder.Size = new System.Drawing.Size(175, 22);
             this.ListOrder.Text = "Список заказов";
             this.ListOrder.Click += new System.EventHandler(this.ListOrder_Click);
             // 
             // выйтиToolStripMenuItem
             // 
             this.выйтиToolStripMenuItem.Name = "выйтиToolStripMenuItem";
-            this.выйтиToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.выйтиToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
             this.выйтиToolStripMenuItem.Text = "Выход";
             this.выйтиToolStripMenuItem.Click += new System.EventHandler(this.выйтиToolStripMenuItem_Click);
             // 
@@ -157,7 +173,7 @@ namespace RifatDiplom
             // оПрограммеToolStripMenuItem
             // 
             this.оПрограммеToolStripMenuItem.Name = "оПрограммеToolStripMenuItem";
-            this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.оПрограммеToolStripMenuItem.Text = "О программе";
             this.оПрограммеToolStripMenuItem.Click += new System.EventHandler(this.оПрограммеToolStripMenuItem_Click);
             // 
@@ -288,6 +304,7 @@ namespace RifatDiplom
             // 
             // dgvDriver
             // 
+            this.dgvDriver.AllowUserToAddRows = false;
             this.dgvDriver.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvDriver.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -304,19 +321,22 @@ namespace RifatDiplom
             this.dCar,
             this.dPevenue,
             this.cbStatus});
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvDriver.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvDriver.DefaultCellStyle = dataGridViewCellStyle5;
             this.dgvDriver.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvDriver.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnKeystroke;
             this.dgvDriver.GridColor = System.Drawing.Color.Black;
             this.dgvDriver.Location = new System.Drawing.Point(0, 30);
+            this.dgvDriver.MultiSelect = false;
             this.dgvDriver.Name = "dgvDriver";
             this.dgvDriver.RowHeadersWidth = 51;
+            this.dgvDriver.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dgvDriver.Size = new System.Drawing.Size(539, 522);
             this.dgvDriver.TabIndex = 5;
             // 
@@ -350,6 +370,7 @@ namespace RifatDiplom
             this.dNickName.HeaderText = "Позывной";
             this.dNickName.MinimumWidth = 6;
             this.dNickName.Name = "dNickName";
+            this.dNickName.ReadOnly = true;
             // 
             // dCar
             // 
@@ -357,6 +378,7 @@ namespace RifatDiplom
             this.dCar.HeaderText = "Машина";
             this.dCar.MinimumWidth = 6;
             this.dCar.Name = "dCar";
+            this.dCar.ReadOnly = true;
             // 
             // dPevenue
             // 
@@ -364,30 +386,19 @@ namespace RifatDiplom
             this.dPevenue.HeaderText = "Выручка";
             this.dPevenue.MinimumWidth = 6;
             this.dPevenue.Name = "dPevenue";
+            this.dPevenue.ReadOnly = true;
             // 
             // cbStatus
             // 
-            this.cbStatus.DataPropertyName = "Status";
+            this.cbStatus.DataPropertyName = "Id_Status";
+            dataGridViewCellStyle4.NullValue = null;
+            this.cbStatus.DefaultCellStyle = dataGridViewCellStyle4;
+            this.cbStatus.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox;
             this.cbStatus.HeaderText = "Статус";
             this.cbStatus.MinimumWidth = 6;
             this.cbStatus.Name = "cbStatus";
             this.cbStatus.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.cbStatus.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // пользовательToolStripMenuItem
-            // 
-            this.пользовательToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.выйтиToolStripMenuItem1});
-            this.пользовательToolStripMenuItem.Name = "пользовательToolStripMenuItem";
-            this.пользовательToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.пользовательToolStripMenuItem.Text = "Пользователь";
-            // 
-            // выйтиToolStripMenuItem1
-            // 
-            this.выйтиToolStripMenuItem1.Name = "выйтиToolStripMenuItem1";
-            this.выйтиToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-            this.выйтиToolStripMenuItem1.Text = "Выйти";
-            this.выйтиToolStripMenuItem1.Click += new System.EventHandler(this.выйтиToolStripMenuItem1_Click);
             // 
             // FMain
             // 
@@ -444,11 +455,11 @@ namespace RifatDiplom
         private System.Windows.Forms.DataGridViewTextBoxColumn cPrice;
         private System.Windows.Forms.DataGridViewComboBoxColumn cStatus;
         private System.Windows.Forms.DataGridViewTextBoxColumn cDriver;
+        private System.Windows.Forms.ToolStripMenuItem пользовательToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem выйтиToolStripMenuItem1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dNickName;
         private System.Windows.Forms.DataGridViewTextBoxColumn dCar;
         private System.Windows.Forms.DataGridViewTextBoxColumn dPevenue;
         private System.Windows.Forms.DataGridViewComboBoxColumn cbStatus;
-        private System.Windows.Forms.ToolStripMenuItem пользовательToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem выйтиToolStripMenuItem1;
     }
 }

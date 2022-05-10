@@ -1,12 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using RifatDiplom.Model.Driver;
 
@@ -148,9 +140,16 @@ namespace RifatDiplom
 
         private void LoadData()
         {
-            using(DriversContext db = new DriversContext())
+            dgvDriver.AutoGenerateColumns = false;
+
+            SQLDriverWithStatus sqlDriver = new SQLDriverWithStatus();
+            if (sqlDriver.OpenSQLConn()==1)
             {
-                var a = db.Drivers.Include("DriverStatus");
+                cbStatus.DisplayMember = "Status";
+                cbStatus.ValueMember = "Id";
+                cbStatus.DataSource = sqlDriver.SELECTStatus();
+
+                dgvDriver.DataSource = sqlDriver.SELECTDriver();
             }
         }
     }
