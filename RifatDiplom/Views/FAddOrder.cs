@@ -8,31 +8,34 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using RifatDiplom.Model;
+using RifatDiplom.Model.Driver;
+using RifatDiplom.Model.Order;
 
 namespace RifatDiplom
 {
     public partial class FAddOrder : Form
     {
-        NewOrderClass NewOrder;
-        DataTable ReadyDrivers;
-        DelegateShowData DData;
+        SQLDriverWithStatus Driver = null;
+        SQLOrderWithStatus Order = null;
 
-        public FAddOrder(NewOrderClass _order, DataTable _ready, DelegateShowData data)
+        public FAddOrder(SQLDriverWithStatus _Driver, SQLOrderWithStatus _Order)
         {
             InitializeComponent();
-            NewOrder = _order;
-            ReadyDrivers = _ready;
-            DData = data;
+            Driver = _Driver;
+            Order = _Order;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             if (CheckValidDate())
             {
-                NewOrder.PointA = tbFrom.Text;
-                NewOrder.PointB = tbTo.Text;
-                NewOrder.Price = GetPrice();
-                NewOrder.IdDrivers = (int)cbDrivers.SelectedValue;
+                DataRow row = Order.OrderDS.Tables[0].NewRow();
+                Order.OrderDS.Tables[0].Rows.Add(row);
+                var state = Order.INSERTOrder(tbFrom.Text, tbTo.Text, GetPrice(), (cbStatus.SelectedIndex + 1), (cbDrivers.SelectedIndex + 1));
+                Order.OrderDS.AcceptChanges();
+
+                MessageBox.Show(state.ToString());
+                this.Close();
             }
         }
 
@@ -57,7 +60,11 @@ namespace RifatDiplom
         {
             cbDrivers.DisplayMember = "NickName";
             cbDrivers.ValueMember = "Id";
-            cbDrivers.DataSource = ReadyDrivers;
+            cbDrivers.DataSource = Driver.DriverDS.Tables[0];
+
+            cbStatus.DisplayMember = "Status";
+            cbStatus.ValueMember = "Id";
+            cbStatus.DataSource = Order.StatusDS.Tables[0];
         }
 
         private bool CheckValidDate()

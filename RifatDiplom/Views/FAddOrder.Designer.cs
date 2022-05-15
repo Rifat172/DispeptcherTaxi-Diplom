@@ -45,6 +45,8 @@ namespace RifatDiplom
             this.cbArea = new System.Windows.Forms.RadioButton();
             this.cbRegion = new System.Windows.Forms.RadioButton();
             this.LWarningPoint = new System.Windows.Forms.Label();
+            this.cbStatus = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -73,7 +75,7 @@ namespace RifatDiplom
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label4.Location = new System.Drawing.Point(340, 11);
+            this.label4.Location = new System.Drawing.Point(332, 67);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(86, 20);
@@ -135,7 +137,7 @@ namespace RifatDiplom
             // 
             this.cbDrivers.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.cbDrivers.FormattingEnabled = true;
-            this.cbDrivers.Location = new System.Drawing.Point(288, 38);
+            this.cbDrivers.Location = new System.Drawing.Point(287, 90);
             this.cbDrivers.Margin = new System.Windows.Forms.Padding(2);
             this.cbDrivers.Name = "cbDrivers";
             this.cbDrivers.Size = new System.Drawing.Size(131, 28);
@@ -213,12 +215,35 @@ namespace RifatDiplom
             this.LWarningPoint.Text = "Необходимо ввести данные";
             this.LWarningPoint.Visible = false;
             // 
+            // cbStatus
+            // 
+            this.cbStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.cbStatus.FormattingEnabled = true;
+            this.cbStatus.Location = new System.Drawing.Point(287, 37);
+            this.cbStatus.Margin = new System.Windows.Forms.Padding(2);
+            this.cbStatus.Name = "cbStatus";
+            this.cbStatus.Size = new System.Drawing.Size(131, 28);
+            this.cbStatus.TabIndex = 21;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label3.Location = new System.Drawing.Point(304, 11);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(117, 20);
+            this.label3.TabIndex = 20;
+            this.label3.Text = "Статус заказа";
+            // 
             // FAddOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Ivory;
             this.ClientSize = new System.Drawing.Size(427, 306);
+            this.Controls.Add(this.cbStatus);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.LWarningPoint);
             this.Controls.Add(this.cbRegion);
             this.Controls.Add(this.cbArea);
@@ -262,5 +287,7 @@ namespace RifatDiplom
         private System.Windows.Forms.RadioButton cbArea;
         private System.Windows.Forms.RadioButton cbRegion;
         private System.Windows.Forms.Label LWarningPoint;
+        private System.Windows.Forms.ComboBox cbStatus;
+        private System.Windows.Forms.Label label3;
     }
 }

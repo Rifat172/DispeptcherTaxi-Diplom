@@ -152,6 +152,11 @@ namespace RifatDiplom
             sqlDriver = new SQLDriverWithStatus();
             sqlOrder = new SQLOrderWithStatus();
 
+            LoadDriver(sqlDriver);
+            LoadOrder(sqlOrder);            
+        }
+        private void LoadDriver(SQLDriverWithStatus sqlDriver)
+        {
             if (sqlDriver.OpenSQLConn() == 1)
             {
                 cbStatus.DisplayMember = "Status";
@@ -160,19 +165,21 @@ namespace RifatDiplom
 
                 dgvDriver.DataSource = sqlDriver.SELECTDriver();
             }
-
-            if(sqlOrder.OpenSQLConn() == 1)
-            {
+        }
+        private void LoadOrder(SQLOrderWithStatus sqlOrder)
+        {
+            //if (sqlOrder.OpenSQLConn() == 1)
+            //{
                 cStatus.DisplayMember = "Status";
                 cStatus.ValueMember = "Id";
                 cStatus.DataSource = sqlOrder.SELECTStatus();
 
                 cDriver.DisplayMember = "NickName";
                 cDriver.ValueMember = "Id";
-                cDriver.DataSource = dgvDriver.DataSource;
+                cDriver.DataSource = sqlDriver.DriverDS.Tables[0];
 
                 dgvOrders.DataSource = sqlOrder.SELECTOrder();
-            }
+            //}
         }
         private void UpdateDriverBtn_Click(object sender, EventArgs e)
         {
@@ -202,7 +209,10 @@ namespace RifatDiplom
 
         private void addOrderBtn_Click(object sender, EventArgs e)
         {
-
+            Form FAdd = new FAddOrder(sqlDriver, sqlOrder);
+            FAdd.ShowDialog();
+            LoadOrder(sqlOrder);
+            dgvOrders.Refresh();
         }
     }
 }

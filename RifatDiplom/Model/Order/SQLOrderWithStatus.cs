@@ -15,43 +15,91 @@ namespace RifatDiplom.Model.Order
         private SqlDataAdapter OrderAd = null;
         private SqlDataAdapter StatusAd = null;
 
-        private DataSet OrderDS = null;
-        private DataSet StatusDS = null;
+        private DataSet _OrderDS = null;
+        private DataSet _StatusDS = null;
+
+        public DataSet OrderDS { get => _OrderDS; set => _OrderDS = value; }
+        public DataSet StatusDS { get => _StatusDS; set => _StatusDS = value; }
 
         public SQLOrderWithStatus()
         {
             sqlConnection = new SqlConnection(RifatDiplom.Properties.Settings.Default.OrderConn);
         }
 
-        public int OpenSQLConn()
-        {
-            sqlConnection.Open();
-            if (sqlConnection.State == ConnectionState.Open)
-                return 1;
-            else
-                return 0;
-        }
+        //public int OpenSQLConn()
+        //{
+        //    if (sqlConnection.State != ConnectionState.Open)
+        //        sqlConnection.Open();
+
+        //    if (sqlConnection.State == ConnectionState.Open)
+        //        return 1;
+        //    else
+        //        return 0;
+        //}
 
         public DataTable SELECTOrder()
         {
+            using(sqlConnection = new SqlConnection(RifatDiplom.Properties.Settings.Default.OrderConn))
+            {
+                sqlConnection.Open();
             string command = "SELECT * FROM Orders";
-            OrderAd = new SqlDataAdapter(command, sqlConnection);
+                OrderAd = new SqlDataAdapter(command, sqlConnection);
             OrderDS = new DataSet();
             OrderAd.Fill(OrderDS);
+            }
             return OrderDS.Tables[0];
         }
         public DataTable SELECTStatus()
         {
-            string command = "SELECT * FROM OrderStatus";
-            StatusAd = new SqlDataAdapter(command, sqlConnection);
-            StatusDS = new DataSet();
-            StatusAd.Fill(StatusDS);
+            using (sqlConnection = new SqlConnection(RifatDiplom.Properties.Settings.Default.OrderConn))
+            {
+                sqlConnection.Open();
+                string command = "SELECT * FROM OrderStatus";
+                StatusAd = new SqlDataAdapter(command, sqlConnection);
+                StatusDS = new DataSet();
+                StatusAd.Fill(StatusDS);
+            }
             return StatusDS.Tables[0];
         }
         public int UPDATEOrder()
         {
-            SqlCommandBuilder sqlCommandBuilder = new SqlCommandBuilder(OrderAd);
-            return OrderAd.Update(OrderDS, OrderDS.Tables[0].TableName);
+            int state = 0;
+            using (sqlConnection = new SqlConnection(RifatDiplom.Properties.Settings.Default.OrderConn))
+            {
+                sqlConnection.Open();
+                SqlCommandBuilder sqlCommandBuilder = new SqlCommandBuilder(OrderAd);
+                state = OrderAd.Update(OrderDS, OrderDS.Tables[0].TableName);
+            }
+            return state;
+        }
+        public int INSERTOrder(string PointA, string PointB, int Price, int Id_OrderStatus, int id_Driver)
+        {
+            int state = 0;
+            using (sqlConnection = new SqlConnection(RifatDiplom.Properties.Settings.Default.OrderConn))
+            {
+                sqlConnection.Open();
+                OrderAd = new SqlDataAdapter("select * from Orders", sqlConnection);
+                SqlCommandBuilder commandBuilder = new SqlCommandBuilder(OrderAd);
+
+                OrderAd.InsertCommand = new SqlCommand("INSERT INTO [Orders] ([PointA], [PointB], [Price], [Id_OrderStatus], [id_Driver]) VALUES (@PointA, @PointB, @Price, @Id_OrderStatus, @id_Driver)", sqlConnection);
+
+                OrderAd.InsertCommand.Parameters.Add("@PointA", SqlDbType.NVarChar, 50);
+                OrderAd.InsertCommand.Parameters["@PointA"].Value = PointA;
+
+                OrderAd.InsertCommand.Parameters.Add("@PointB", SqlDbType.NVarChar, 50);
+                OrderAd.InsertCommand.Parameters["@PointB"].Value = PointB;
+
+                OrderAd.InsertCommand.Parameters.Add("@Price", SqlDbType.Int);
+                OrderAd.InsertCommand.Parameters["@Price"].Value = Price;
+
+                OrderAd.InsertCommand.Parameters.Add("@Id_OrderStatus", SqlDbType.Int);
+                OrderAd.InsertCommand.Parameters["@Id_OrderStatus"].Value = Id_OrderStatus;
+
+                OrderAd.InsertCommand.Parameters.Add("@Id_Driver", SqlDbType.Int);
+                OrderAd.InsertCommand.Parameters["@id_Driver"].Value = id_Driver;
+                state = OrderAd.Update(OrderDS, OrderDS.Tables[0].TableName);
+            }
+            return state;
         }
 
         public void CloseSqlConn()

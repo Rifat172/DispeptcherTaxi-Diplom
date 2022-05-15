@@ -17,8 +17,11 @@ namespace RifatDiplom.Model.Driver
         private SqlDataAdapter DriverAd = null;
         private SqlDataAdapter StatusAd = null;
 
-        private DataSet DriverDS = null;
-        private DataSet StatusDS = null;
+        private DataSet _DriverDS = null;
+        private DataSet _StatusDS = null;
+
+        public DataSet DriverDS { get => _DriverDS; set => _DriverDS = value; }
+        public DataSet StatusDS { get => _StatusDS; set => _StatusDS = value; }
 
         public SQLDriverWithStatus()
         {
@@ -27,7 +30,9 @@ namespace RifatDiplom.Model.Driver
 
         public int OpenSQLConn()
         {
-            sqlConnection.Open();
+            if (sqlConnection.State != ConnectionState.Open)
+                sqlConnection.Open();
+
             if (sqlConnection.State == ConnectionState.Open)
                 return 1;
             else
@@ -45,9 +50,9 @@ namespace RifatDiplom.Model.Driver
         {
             string command = "SELECT * FROM DriverStatus";
             StatusAd = new SqlDataAdapter(command, sqlConnection);
-            StatusDS = new DataSet();
-            StatusAd.Fill(StatusDS);
-            return StatusDS.Tables[0];
+            DriverDS = new DataSet();
+            StatusAd.Fill(DriverDS);
+            return DriverDS.Tables[0];
         }
         public int UPDATEDriver()
         {
