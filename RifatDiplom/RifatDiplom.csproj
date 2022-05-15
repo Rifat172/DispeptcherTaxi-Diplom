@@ -67,6 +67,7 @@
   <ItemGroup>
     <Compile Include="Model\Driver\SQLDriverWithStatus.cs" />
     <Compile Include="Model\NewOrderClass.cs" />
+    <Compile Include="Model\Order\SQLOrderWithStatus.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -140,8 +141,8 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Data\OrderData_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>OrderData.mdf</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="Resources\taxi_png_white.png" />
     <None Include="Resources\taxi_icon_white.ico" />

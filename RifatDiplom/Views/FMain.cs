@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using RifatDiplom.Model.Driver;
+using RifatDiplom.Model.Order;
 
 namespace RifatDiplom
 {
@@ -40,17 +41,7 @@ namespace RifatDiplom
             EnableLists += EnabledSplit;
         }
 
-        #region закрытие приложения
-        private void FMain_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            Application.Exit();
-        }
-
-        private void выйтиToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-        #endregion
+        
 
         private void выйтиToolStripMenuItem1_Click(object sender, EventArgs e)
         {
@@ -132,18 +123,36 @@ namespace RifatDiplom
             }
         }
         #endregion
+        #region закрытие приложения
+        private void FMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            sqlDriver.CloseSqlConn();
+            sqlOrder.CloseSqlConn();
+            Application.Exit();
+        }
 
+        private void выйтиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+        #endregion
+
+        SQLDriverWithStatus sqlDriver = null;
+        SQLOrderWithStatus sqlOrder = null;
+        
         private void FMain_Load(object sender, EventArgs e)
         {
             LoadData();
         }
-
         private void LoadData()
         {
             dgvDriver.AutoGenerateColumns = false;
+            dgvOrders.AutoGenerateColumns = false;
 
-            SQLDriverWithStatus sqlDriver = new SQLDriverWithStatus();
-            if (sqlDriver.OpenSQLConn()==1)
+            sqlDriver = new SQLDriverWithStatus();
+            sqlOrder = new SQLOrderWithStatus();
+
+            if (sqlDriver.OpenSQLConn() == 1)
             {
                 cbStatus.DisplayMember = "Status";
                 cbStatus.ValueMember = "Id";
@@ -151,6 +160,49 @@ namespace RifatDiplom
 
                 dgvDriver.DataSource = sqlDriver.SELECTDriver();
             }
+
+            if(sqlOrder.OpenSQLConn() == 1)
+            {
+                cStatus.DisplayMember = "Status";
+                cStatus.ValueMember = "Id";
+                cStatus.DataSource = sqlOrder.SELECTStatus();
+
+                cDriver.DisplayMember = "NickName";
+                cDriver.ValueMember = "Id";
+                cDriver.DataSource = dgvDriver.DataSource;
+
+                dgvOrders.DataSource = sqlOrder.SELECTOrder();
+            }
+        }
+        private void UpdateDriverBtn_Click(object sender, EventArgs e)
+        {
+            var state = sqlDriver.UPDATEDriver();
+            if (state == 0)
+            {
+                MessageBox.Show("Данные не были изменены", "Предупреждение");
+            }
+            else
+            {
+                MessageBox.Show("Данные сохранены", "Успешно");
+            }
+        }
+
+        private void UpdateOrderBtn_Click(object sender, EventArgs e)
+        {
+            var state = sqlOrder.UPDATEOrder();
+            if (state == 0)
+            {
+                MessageBox.Show("Данные не были изменены", "Предупреждение");
+            }
+            else
+            {
+                MessageBox.Show("Данные сохранены", "Успешно");
+            }
+        }
+
+        private void addOrderBtn_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
