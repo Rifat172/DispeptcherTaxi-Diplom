@@ -9,57 +9,54 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using RifatDiplom.Model;
+using RifatDiplom.Model.Dispatcher;
 
 namespace RifatDiplom
 {
     public partial class FSignIn : Form
     {
         object Status;
+        int Id;
         bool IsAdmin = false;
+
+        SQLDispatcherWithLogin sqlDispatcher = null;
         public FSignIn()
         {
             InitializeComponent();
         }
         private void bsubmit_Click(object sender, EventArgs e)
         {
-            using (SqlConnection connection = new SqlConnection(Properties.Settings.Default.DispatcherConn))
-            {
-                string sql = "SELECT L.Id, L.Login, L.Password, D.Status FROM LoginTable as L inner join DispatcherTableData as D ON L.Id = D.Id WHERE L.Login = @uL AND L.Password = @uP";
-                using (SqlCommand sqlCommand = new SqlCommand(sql, connection))
-                {
-                    sqlCommand.Parameters.Add(new SqlParameter("@uL", SqlDbType.NVarChar, 25));
-                    sqlCommand.Parameters["@uL"].Value = tbLogin.Text;
-                    sqlCommand.Parameters.Add(new SqlParameter("@uP", SqlDbType.NVarChar, 25));
-                    sqlCommand.Parameters["@uP"].Value = tbPassword.Text;
+            sqlDispatcher = new SQLDispatcherWithLogin();
 
-                    try
+            if (sqlDispatcher.OpenSQLConn() == 1)
+            {
+                var Login = sqlDispatcher.SELECTLogin(tbLogin.Text, tbPassword.Text);
+                if(Login.Rows.Count == 0)
+                {
+                    label2.Visible = true;
+                }
+                else
+                {
+                    label2.Visible = false;
+
+                    DataRow Ldata = Login.Rows[0];
+                    Id = (int)Ldata["Id"];
+                    var Dispather = sqlDispatcher.SELECTDispatcher(Id);
+
+                    DataRow Ldis = Dispather.Rows[0];
+                    if ((string)Ldis["Status"] == "Admin")
                     {
-                        connection.Open();
-                        using (SqlDataReader dataReader = sqlCommand.ExecuteReader())
-                        {
-                            if (!dataReader.HasRows)
-                            {
-                                label2.Visible = true;
-                                return;
-                            }
-                            dataReader.Read();
-                            Status = dataReader["Status"];
-                            dataReader.Close();
-                        }
+                        IsAdmin = true;
                     }
-                    catch (Exception ex)
-                    { 
-                        MessageBox.Show(ex.ToString());
-                    }
-                    finally
+                    else
                     {
-                        // Close connection.
-                        connection.Close();
+                        IsAdmin = false;
                     }
                 }
             }
-            IsAdmin = Status.ToString() == "admin" ? true : false;
-            Form enter = new FMain(IsAdmin);
+            sqlDispatcher.CloseSqlConn();
+
+            Form enter = new FMain(Id, IsAdmin);
             enter.Show();
             this.Hide();
         }

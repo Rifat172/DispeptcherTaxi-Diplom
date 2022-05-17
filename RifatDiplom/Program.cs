@@ -7,7 +7,6 @@ using RifatDiplom.Model;
 
 namespace RifatDiplom
 {
-    public delegate void DelegateShowData(NewOrderClass order);
     static class Program
     {
         /// <summary>

@@ -2,11 +2,13 @@
 using System.Windows.Forms;
 using RifatDiplom.Model.Driver;
 using RifatDiplom.Model.Order;
+using RifatDiplom.Views;
 
 namespace RifatDiplom
 {
     public partial class FMain : Form
     {
+        int CurrentUserId = 0;
         #region Views
         public delegate void MyEventHandler();
         public event MyEventHandler DisableLists = delegate { };
@@ -33,21 +35,13 @@ namespace RifatDiplom
                 }
             }
         }
-        public FMain(bool isAdmin)
+        public FMain(object Id, bool isAdmin)
         {
             InitializeComponent();
+            CurrentUserId = (int)Id;
             addUser.Visible = isAdmin;
             DisableLists += DisabledSplit;
             EnableLists += EnabledSplit;
-        }
-
-        
-
-        private void выйтиToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            Form SignIn = new FSignIn();
-            SignIn.Show();
-            this.Hide();
         }
         private void добавитьПользователяToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -122,6 +116,17 @@ namespace RifatDiplom
                 IsBothListDisabled = false;
             }
         }
+        private void выйтиToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            Form SignIn = new FSignIn();
+            SignIn.Show();
+            this.Hide();
+        }
+        private void профильToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form Profile = new FProfile(CurrentUserId);
+            Profile.Show();
+        }
         #endregion
         #region закрытие приложения
         private void FMain_FormClosing(object sender, FormClosingEventArgs e)
@@ -168,8 +173,8 @@ namespace RifatDiplom
         }
         private void LoadOrder(SQLOrderWithStatus sqlOrder)
         {
-            //if (sqlOrder.OpenSQLConn() == 1)
-            //{
+            if (sqlOrder.OpenSQLConn() == 1)
+            {
                 cStatus.DisplayMember = "Status";
                 cStatus.ValueMember = "Id";
                 cStatus.DataSource = sqlOrder.SELECTStatus();
@@ -179,7 +184,7 @@ namespace RifatDiplom
                 cDriver.DataSource = sqlDriver.DriverDS.Tables[0];
 
                 dgvOrders.DataSource = sqlOrder.SELECTOrder();
-            //}
+            }
         }
         private void UpdateDriverBtn_Click(object sender, EventArgs e)
         {
@@ -213,6 +218,12 @@ namespace RifatDiplom
             FAdd.ShowDialog();
             LoadOrder(sqlOrder);
             dgvOrders.Refresh();
+        }
+
+        private void addDriver_Click(object sender, EventArgs e)
+        {
+            Form driver = new FAddDriver();
+            driver.Show();
         }
     }
 }

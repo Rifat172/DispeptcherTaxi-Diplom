@@ -26,79 +26,79 @@ namespace RifatDiplom.Model.Order
             sqlConnection = new SqlConnection(RifatDiplom.Properties.Settings.Default.OrderConn);
         }
 
-        //public int OpenSQLConn()
-        //{
-        //    if (sqlConnection.State != ConnectionState.Open)
-        //        sqlConnection.Open();
+        public int OpenSQLConn()
+        {
+            if (sqlConnection.State != ConnectionState.Open)
+                sqlConnection.Open();
 
-        //    if (sqlConnection.State == ConnectionState.Open)
-        //        return 1;
-        //    else
-        //        return 0;
-        //}
+            if (sqlConnection.State == ConnectionState.Open)
+                return 1;
+            else
+                return 0;
+        }
 
         public DataTable SELECTOrder()
         {
-            using(sqlConnection = new SqlConnection(RifatDiplom.Properties.Settings.Default.OrderConn))
-            {
-                sqlConnection.Open();
             string command = "SELECT * FROM Orders";
-                OrderAd = new SqlDataAdapter(command, sqlConnection);
+            OrderAd = new SqlDataAdapter(command, sqlConnection);
             OrderDS = new DataSet();
             OrderAd.Fill(OrderDS);
-            }
             return OrderDS.Tables[0];
         }
         public DataTable SELECTStatus()
         {
-            using (sqlConnection = new SqlConnection(RifatDiplom.Properties.Settings.Default.OrderConn))
-            {
-                sqlConnection.Open();
-                string command = "SELECT * FROM OrderStatus";
-                StatusAd = new SqlDataAdapter(command, sqlConnection);
-                StatusDS = new DataSet();
-                StatusAd.Fill(StatusDS);
-            }
+            string command = "SELECT * FROM OrderStatus";
+            StatusAd = new SqlDataAdapter(command, sqlConnection);
+            StatusDS = new DataSet();
+            StatusAd.Fill(StatusDS);
             return StatusDS.Tables[0];
         }
         public int UPDATEOrder()
         {
             int state = 0;
-            using (sqlConnection = new SqlConnection(RifatDiplom.Properties.Settings.Default.OrderConn))
-            {
-                sqlConnection.Open();
-                SqlCommandBuilder sqlCommandBuilder = new SqlCommandBuilder(OrderAd);
-                state = OrderAd.Update(OrderDS, OrderDS.Tables[0].TableName);
-            }
+
+            SqlCommandBuilder sqlCommandBuilder = new SqlCommandBuilder(OrderAd);
+            state = OrderAd.Update(OrderDS, OrderDS.Tables[0].TableName);
+
             return state;
         }
-        public int INSERTOrder(string PointA, string PointB, int Price, int Id_OrderStatus, int id_Driver)
+        public int INSERTOrder(string PointA, string PointB, int Price, int Id_OrderStatus, int id_Driver, string date, string time)
         {
             int state = 0;
-            using (sqlConnection = new SqlConnection(RifatDiplom.Properties.Settings.Default.OrderConn))
-            {
-                sqlConnection.Open();
-                OrderAd = new SqlDataAdapter("select * from Orders", sqlConnection);
-                SqlCommandBuilder commandBuilder = new SqlCommandBuilder(OrderAd);
 
-                OrderAd.InsertCommand = new SqlCommand("INSERT INTO [Orders] ([PointA], [PointB], [Price], [Id_OrderStatus], [id_Driver]) VALUES (@PointA, @PointB, @Price, @Id_OrderStatus, @id_Driver)", sqlConnection);
+            SqlCommandBuilder commandBuilder = new SqlCommandBuilder(OrderAd);
 
-                OrderAd.InsertCommand.Parameters.Add("@PointA", SqlDbType.NVarChar, 50);
-                OrderAd.InsertCommand.Parameters["@PointA"].Value = PointA;
+            OrderAd.InsertCommand = new SqlCommand("INSERT INTO [Orders] " +
+                "([PointA], [PointB], [Price], [Id_OrderStatus], [id_Driver], [TimeCreate], [DateCreate]) VALUES " +
+                "(@PointA,  @PointB,  @Price,  @Id_OrderStatus,  @id_Driver,  @TimeCreate, @DateCreate)", sqlConnection);
 
-                OrderAd.InsertCommand.Parameters.Add("@PointB", SqlDbType.NVarChar, 50);
-                OrderAd.InsertCommand.Parameters["@PointB"].Value = PointB;
+            OrderAd.InsertCommand.Parameters.Add("@PointA", SqlDbType.NVarChar, 50);
+            OrderAd.InsertCommand.Parameters["@PointA"].Value = PointA;
 
-                OrderAd.InsertCommand.Parameters.Add("@Price", SqlDbType.Int);
-                OrderAd.InsertCommand.Parameters["@Price"].Value = Price;
+            OrderAd.InsertCommand.Parameters.Add("@PointB", SqlDbType.NVarChar, 50);
+            OrderAd.InsertCommand.Parameters["@PointB"].Value = PointB;
 
-                OrderAd.InsertCommand.Parameters.Add("@Id_OrderStatus", SqlDbType.Int);
-                OrderAd.InsertCommand.Parameters["@Id_OrderStatus"].Value = Id_OrderStatus;
+            OrderAd.InsertCommand.Parameters.Add("@Price", SqlDbType.Int);
+            OrderAd.InsertCommand.Parameters["@Price"].Value = Price;
 
-                OrderAd.InsertCommand.Parameters.Add("@Id_Driver", SqlDbType.Int);
-                OrderAd.InsertCommand.Parameters["@id_Driver"].Value = id_Driver;
-                state = OrderAd.Update(OrderDS, OrderDS.Tables[0].TableName);
-            }
+            OrderAd.InsertCommand.Parameters.Add("@Id_OrderStatus", SqlDbType.Int);
+            OrderAd.InsertCommand.Parameters["@Id_OrderStatus"].Value = Id_OrderStatus;
+
+            OrderAd.InsertCommand.Parameters.Add("@Id_Driver", SqlDbType.Int);
+
+            if (id_Driver == 0)
+                OrderAd.InsertCommand.Parameters["@id_Driver"].Value = DBNull.Value;
+            else
+                OrderAd.InsertCommand.Parameters["@id_Driver"].Value = (int)id_Driver;
+
+            OrderAd.InsertCommand.Parameters.Add("@TimeCreate", SqlDbType.Time);
+            OrderAd.InsertCommand.Parameters["@TimeCreate"].Value = time;
+
+            OrderAd.InsertCommand.Parameters.Add("@DateCreate", SqlDbType.Date);
+            OrderAd.InsertCommand.Parameters["@DateCreate"].Value = date;
+
+            state = OrderAd.Update(OrderDS, OrderDS.Tables[0].TableName);
+
             return state;
         }
 

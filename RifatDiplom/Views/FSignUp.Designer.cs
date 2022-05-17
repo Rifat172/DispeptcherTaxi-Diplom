@@ -32,16 +32,16 @@ namespace RifatDiplom
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FSignUp));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.Patronymic = new System.Windows.Forms.TextBox();
+            this.FirstName = new System.Windows.Forms.TextBox();
+            this.LastName = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.OfficeStreet = new System.Windows.Forms.TextBox();
+            this.PhoneNumber = new System.Windows.Forms.TextBox();
+            this.Email = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -50,8 +50,8 @@ namespace RifatDiplom
             this.textBox9 = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.bCancel = new System.Windows.Forms.Button();
+            this.bAdd = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -70,9 +70,9 @@ namespace RifatDiplom
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.textBox3);
-            this.groupBox1.Controls.Add(this.textBox2);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.Patronymic);
+            this.groupBox1.Controls.Add(this.FirstName);
+            this.groupBox1.Controls.Add(this.LastName);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
@@ -84,29 +84,29 @@ namespace RifatDiplom
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "ФИО";
             // 
-            // textBox3
+            // Patronymic
             // 
-            this.textBox3.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.textBox3.Location = new System.Drawing.Point(121, 95);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(283, 26);
-            this.textBox3.TabIndex = 5;
+            this.Patronymic.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.Patronymic.Location = new System.Drawing.Point(121, 95);
+            this.Patronymic.Name = "Patronymic";
+            this.Patronymic.Size = new System.Drawing.Size(283, 26);
+            this.Patronymic.TabIndex = 5;
             // 
-            // textBox2
+            // FirstName
             // 
-            this.textBox2.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.textBox2.Location = new System.Drawing.Point(121, 58);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(283, 26);
-            this.textBox2.TabIndex = 4;
+            this.FirstName.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.FirstName.Location = new System.Drawing.Point(121, 58);
+            this.FirstName.Name = "FirstName";
+            this.FirstName.Size = new System.Drawing.Size(283, 26);
+            this.FirstName.TabIndex = 4;
             // 
-            // textBox1
+            // LastName
             // 
-            this.textBox1.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.textBox1.Location = new System.Drawing.Point(121, 22);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(283, 26);
-            this.textBox1.TabIndex = 3;
+            this.LastName.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.LastName.Location = new System.Drawing.Point(121, 22);
+            this.LastName.Name = "LastName";
+            this.LastName.Size = new System.Drawing.Size(283, 26);
+            this.LastName.TabIndex = 3;
             // 
             // label3
             // 
@@ -143,9 +143,9 @@ namespace RifatDiplom
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.textBox4);
-            this.groupBox2.Controls.Add(this.textBox5);
-            this.groupBox2.Controls.Add(this.textBox6);
+            this.groupBox2.Controls.Add(this.OfficeStreet);
+            this.groupBox2.Controls.Add(this.PhoneNumber);
+            this.groupBox2.Controls.Add(this.Email);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.label6);
@@ -157,29 +157,29 @@ namespace RifatDiplom
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Контактные данные";
             // 
-            // textBox4
+            // OfficeStreet
             // 
-            this.textBox4.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.textBox4.Location = new System.Drawing.Point(260, 95);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(283, 26);
-            this.textBox4.TabIndex = 5;
+            this.OfficeStreet.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.OfficeStreet.Location = new System.Drawing.Point(260, 95);
+            this.OfficeStreet.Name = "OfficeStreet";
+            this.OfficeStreet.Size = new System.Drawing.Size(283, 26);
+            this.OfficeStreet.TabIndex = 5;
             // 
-            // textBox5
+            // PhoneNumber
             // 
-            this.textBox5.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.textBox5.Location = new System.Drawing.Point(260, 58);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(283, 26);
-            this.textBox5.TabIndex = 4;
+            this.PhoneNumber.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.PhoneNumber.Location = new System.Drawing.Point(260, 58);
+            this.PhoneNumber.Name = "PhoneNumber";
+            this.PhoneNumber.Size = new System.Drawing.Size(283, 26);
+            this.PhoneNumber.TabIndex = 4;
             // 
-            // textBox6
+            // Email
             // 
-            this.textBox6.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.textBox6.Location = new System.Drawing.Point(260, 22);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(283, 26);
-            this.textBox6.TabIndex = 3;
+            this.Email.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.Email.Location = new System.Drawing.Point(260, 22);
+            this.Email.Name = "Email";
+            this.Email.Size = new System.Drawing.Size(283, 26);
+            this.Email.TabIndex = 3;
             // 
             // label4
             // 
@@ -266,25 +266,25 @@ namespace RifatDiplom
             this.label9.TabIndex = 0;
             this.label9.Text = "Логин";
             // 
-            // button1
+            // bCancel
             // 
-            this.button1.BackColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(13, 436);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(103, 34);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "Отмена";
-            this.button1.UseVisualStyleBackColor = false;
+            this.bCancel.BackColor = System.Drawing.Color.White;
+            this.bCancel.Location = new System.Drawing.Point(13, 436);
+            this.bCancel.Name = "bCancel";
+            this.bCancel.Size = new System.Drawing.Size(103, 34);
+            this.bCancel.TabIndex = 8;
+            this.bCancel.Text = "Отмена";
+            this.bCancel.UseVisualStyleBackColor = false;
             // 
-            // button2
+            // bAdd
             // 
-            this.button2.BackColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(459, 437);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(103, 34);
-            this.button2.TabIndex = 9;
-            this.button2.Text = "Добавить";
-            this.button2.UseVisualStyleBackColor = false;
+            this.bAdd.BackColor = System.Drawing.Color.White;
+            this.bAdd.Location = new System.Drawing.Point(459, 437);
+            this.bAdd.Name = "bAdd";
+            this.bAdd.Size = new System.Drawing.Size(103, 34);
+            this.bAdd.TabIndex = 9;
+            this.bAdd.Text = "Добавить";
+            this.bAdd.UseVisualStyleBackColor = false;
             // 
             // FSignUp
             // 
@@ -292,8 +292,8 @@ namespace RifatDiplom
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Ivory;
             this.ClientSize = new System.Drawing.Size(585, 483);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.bAdd);
+            this.Controls.Add(this.bCancel);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -320,16 +320,16 @@ namespace RifatDiplom
 
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox Patronymic;
+        private System.Windows.Forms.TextBox FirstName;
+        private System.Windows.Forms.TextBox LastName;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox OfficeStreet;
+        private System.Windows.Forms.TextBox PhoneNumber;
+        private System.Windows.Forms.TextBox Email;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
@@ -338,7 +338,7 @@ namespace RifatDiplom
         private System.Windows.Forms.TextBox textBox9;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button bCancel;
+        private System.Windows.Forms.Button bAdd;
     }
 }

@@ -66,12 +66,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\Driver\SQLDriverWithStatus.cs" />
-    <Compile Include="Model\NewOrderClass.cs" />
     <Compile Include="Model\Order\SQLOrderWithStatus.cs" />
+    <Compile Include="Model\Dispatcher\SQLDispatcherWithLogin.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FAddDriver.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FAddDriver.Designer.cs">
+      <DependentUpon>FAddDriver.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\FAddOrder.cs">
       <SubType>Form</SubType>
@@ -84,6 +90,12 @@
     </Compile>
     <Compile Include="Views\FMain.Designer.cs">
       <DependentUpon>FMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FProfile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FProfile.Designer.cs">
+      <DependentUpon>FProfile.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\FSignIn.cs">
       <SubType>Form</SubType>
@@ -99,11 +111,17 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Views\FAddDriver.resx">
+      <DependentUpon>FAddDriver.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\FAddOrder.resx">
       <DependentUpon>FAddOrder.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\FMain.resx">
       <DependentUpon>FMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FProfile.resx">
+      <DependentUpon>FProfile.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\FSignIn.resx">
       <DependentUpon>FSignIn.cs</DependentUpon>

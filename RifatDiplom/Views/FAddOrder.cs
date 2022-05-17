@@ -31,10 +31,15 @@ namespace RifatDiplom
             {
                 DataRow row = Order.OrderDS.Tables[0].NewRow();
                 Order.OrderDS.Tables[0].Rows.Add(row);
-                var state = Order.INSERTOrder(tbFrom.Text, tbTo.Text, GetPrice(), (cbStatus.SelectedIndex + 1), (cbDrivers.SelectedIndex + 1));
-                Order.OrderDS.AcceptChanges();
 
-                MessageBox.Show(state.ToString());
+                DataRowView DriverRow = (DataRowView)cbDrivers.SelectedItem;
+
+                int Id_Driver = 0;
+                if (DriverRow != null)
+                    Id_Driver = (int)DriverRow["Id"];
+
+                var state = Order.INSERTOrder(tbFrom.Text, tbTo.Text, GetPrice(), (cbStatus.SelectedIndex + 1), Id_Driver, DateTime.Now.ToString("d"), DateTime.Now.ToLongTimeString());
+                Order.OrderDS.AcceptChanges();
                 this.Close();
             }
         }
@@ -58,9 +63,12 @@ namespace RifatDiplom
 
         private void FAddOrder_Load(object sender, EventArgs e)
         {
+            DataView dv = new DataView(Driver.DriverDS.Tables[0]);
+            dv.RowFilter = "Id_Status = 1";
+
             cbDrivers.DisplayMember = "NickName";
             cbDrivers.ValueMember = "Id";
-            cbDrivers.DataSource = Driver.DriverDS.Tables[0];
+            cbDrivers.DataSource = dv;
 
             cbStatus.DisplayMember = "Status";
             cbStatus.ValueMember = "Id";

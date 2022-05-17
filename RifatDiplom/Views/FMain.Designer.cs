@@ -37,11 +37,12 @@ namespace RifatDiplom
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FMain));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.фаилToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.пользовательToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.выйтиToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.ListDrivers = new System.Windows.Forms.ToolStripMenuItem();
             this.ListOrder = new System.Windows.Forms.ToolStripMenuItem();
             this.выйтиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.пользовательToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.профильToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.выйтиToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.AdminPanel = new System.Windows.Forms.ToolStripMenuItem();
             this.addUser = new System.Windows.Forms.ToolStripMenuItem();
             this.addDriver = new System.Windows.Forms.ToolStripMenuItem();
@@ -63,6 +64,8 @@ namespace RifatDiplom
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.UpdateDriverBtn = new System.Windows.Forms.Button();
             this.UpdateOrderBtn = new System.Windows.Forms.Button();
+            this.CreateData = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CreateTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cFrom = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cTo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -86,46 +89,32 @@ namespace RifatDiplom
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.фаилToolStripMenuItem,
+            this.пользовательToolStripMenuItem1,
             this.AdminPanel,
             this.справкаToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1068, 24);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(1424, 28);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // фаилToolStripMenuItem
             // 
             this.фаилToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.пользовательToolStripMenuItem,
             this.ListDrivers,
             this.ListOrder,
             this.выйтиToolStripMenuItem});
             this.фаилToolStripMenuItem.Name = "фаилToolStripMenuItem";
-            this.фаилToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
+            this.фаилToolStripMenuItem.Size = new System.Drawing.Size(59, 24);
             this.фаилToolStripMenuItem.Text = "Фаил";
-            // 
-            // пользовательToolStripMenuItem
-            // 
-            this.пользовательToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.выйтиToolStripMenuItem1});
-            this.пользовательToolStripMenuItem.Name = "пользовательToolStripMenuItem";
-            this.пользовательToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
-            this.пользовательToolStripMenuItem.Text = "Пользователь";
-            // 
-            // выйтиToolStripMenuItem1
-            // 
-            this.выйтиToolStripMenuItem1.Name = "выйтиToolStripMenuItem1";
-            this.выйтиToolStripMenuItem1.Size = new System.Drawing.Size(109, 22);
-            this.выйтиToolStripMenuItem1.Text = "Выйти";
-            this.выйтиToolStripMenuItem1.Click += new System.EventHandler(this.выйтиToolStripMenuItem1_Click);
             // 
             // ListDrivers
             // 
             this.ListDrivers.Checked = true;
             this.ListDrivers.CheckState = System.Windows.Forms.CheckState.Checked;
             this.ListDrivers.Name = "ListDrivers";
-            this.ListDrivers.Size = new System.Drawing.Size(175, 22);
+            this.ListDrivers.Size = new System.Drawing.Size(219, 26);
             this.ListDrivers.Text = "Список водителей";
             this.ListDrivers.Click += new System.EventHandler(this.ListDrivers_Click);
             // 
@@ -134,16 +123,39 @@ namespace RifatDiplom
             this.ListOrder.Checked = true;
             this.ListOrder.CheckState = System.Windows.Forms.CheckState.Checked;
             this.ListOrder.Name = "ListOrder";
-            this.ListOrder.Size = new System.Drawing.Size(175, 22);
+            this.ListOrder.Size = new System.Drawing.Size(219, 26);
             this.ListOrder.Text = "Список заказов";
             this.ListOrder.Click += new System.EventHandler(this.ListOrder_Click);
             // 
             // выйтиToolStripMenuItem
             // 
             this.выйтиToolStripMenuItem.Name = "выйтиToolStripMenuItem";
-            this.выйтиToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
+            this.выйтиToolStripMenuItem.Size = new System.Drawing.Size(219, 26);
             this.выйтиToolStripMenuItem.Text = "Выход";
             this.выйтиToolStripMenuItem.Click += new System.EventHandler(this.выйтиToolStripMenuItem_Click);
+            // 
+            // пользовательToolStripMenuItem1
+            // 
+            this.пользовательToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.профильToolStripMenuItem,
+            this.выйтиToolStripMenuItem2});
+            this.пользовательToolStripMenuItem1.Name = "пользовательToolStripMenuItem1";
+            this.пользовательToolStripMenuItem1.Size = new System.Drawing.Size(121, 24);
+            this.пользовательToolStripMenuItem1.Text = "Пользователь";
+            // 
+            // профильToolStripMenuItem
+            // 
+            this.профильToolStripMenuItem.Name = "профильToolStripMenuItem";
+            this.профильToolStripMenuItem.Size = new System.Drawing.Size(156, 26);
+            this.профильToolStripMenuItem.Text = "Профиль";
+            this.профильToolStripMenuItem.Click += new System.EventHandler(this.профильToolStripMenuItem_Click);
+            // 
+            // выйтиToolStripMenuItem2
+            // 
+            this.выйтиToolStripMenuItem2.Name = "выйтиToolStripMenuItem2";
+            this.выйтиToolStripMenuItem2.Size = new System.Drawing.Size(156, 26);
+            this.выйтиToolStripMenuItem2.Text = "Выйти";
+            this.выйтиToolStripMenuItem2.Click += new System.EventHandler(this.выйтиToolStripMenuItem2_Click);
             // 
             // AdminPanel
             // 
@@ -151,35 +163,37 @@ namespace RifatDiplom
             this.addUser,
             this.addDriver});
             this.AdminPanel.Name = "AdminPanel";
-            this.AdminPanel.Size = new System.Drawing.Size(134, 20);
+            this.AdminPanel.Size = new System.Drawing.Size(170, 24);
             this.AdminPanel.Text = "Администрирование";
             // 
             // addUser
             // 
             this.addUser.Name = "addUser";
-            this.addUser.Size = new System.Drawing.Size(204, 22);
+            this.addUser.Size = new System.Drawing.Size(259, 26);
             this.addUser.Text = "Добавить пользователя";
             this.addUser.Visible = false;
             this.addUser.Click += new System.EventHandler(this.добавитьПользователяToolStripMenuItem_Click);
             // 
             // addDriver
             // 
+            this.addDriver.BackColor = System.Drawing.Color.Ivory;
             this.addDriver.Name = "addDriver";
-            this.addDriver.Size = new System.Drawing.Size(204, 22);
+            this.addDriver.Size = new System.Drawing.Size(259, 26);
             this.addDriver.Text = "Добавить водителя";
+            this.addDriver.Click += new System.EventHandler(this.addDriver_Click);
             // 
             // справкаToolStripMenuItem
             // 
             this.справкаToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.оПрограммеToolStripMenuItem});
             this.справкаToolStripMenuItem.Name = "справкаToolStripMenuItem";
-            this.справкаToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
+            this.справкаToolStripMenuItem.Size = new System.Drawing.Size(81, 24);
             this.справкаToolStripMenuItem.Text = "Справка";
             // 
             // оПрограммеToolStripMenuItem
             // 
             this.оПрограммеToolStripMenuItem.Name = "оПрограммеToolStripMenuItem";
-            this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+            this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(187, 26);
             this.оПрограммеToolStripMenuItem.Text = "О программе";
             this.оПрограммеToolStripMenuItem.Click += new System.EventHandler(this.оПрограммеToolStripMenuItem_Click);
             // 
@@ -190,19 +204,20 @@ namespace RifatDiplom
             this.tableLayoutPanel1.Controls.Add(this.splitContainer1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel4, 0, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 24);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 28);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 95F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1068, 552);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1424, 681);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(3, 3);
+            this.splitContainer1.Location = new System.Drawing.Point(4, 4);
+            this.splitContainer1.Margin = new System.Windows.Forms.Padding(4);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
@@ -217,8 +232,9 @@ namespace RifatDiplom
             this.splitContainer1.Panel2.Controls.Add(this.dgvDriver);
             this.splitContainer1.Panel2.Controls.Add(this.tableLayoutPanel3);
             this.splitContainer1.Panel2MinSize = 250;
-            this.splitContainer1.Size = new System.Drawing.Size(1062, 518);
-            this.splitContainer1.SplitterDistance = 584;
+            this.splitContainer1.Size = new System.Drawing.Size(1416, 638);
+            this.splitContainer1.SplitterDistance = 778;
+            this.splitContainer1.SplitterWidth = 5;
             this.splitContainer1.TabIndex = 2;
             // 
             // dgvOrders
@@ -236,6 +252,8 @@ namespace RifatDiplom
             this.dgvOrders.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvOrders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvOrders.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.CreateData,
+            this.CreateTime,
             this.cFrom,
             this.cTo,
             this.cPrice,
@@ -252,11 +270,12 @@ namespace RifatDiplom
             this.dgvOrders.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvOrders.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.dgvOrders.GridColor = System.Drawing.Color.Black;
-            this.dgvOrders.Location = new System.Drawing.Point(0, 30);
+            this.dgvOrders.Location = new System.Drawing.Point(0, 37);
+            this.dgvOrders.Margin = new System.Windows.Forms.Padding(4);
             this.dgvOrders.MultiSelect = false;
             this.dgvOrders.Name = "dgvOrders";
             this.dgvOrders.RowHeadersWidth = 51;
-            this.dgvOrders.Size = new System.Drawing.Size(584, 488);
+            this.dgvOrders.Size = new System.Drawing.Size(778, 601);
             this.dgvOrders.TabIndex = 6;
             // 
             // tableLayoutPanel2
@@ -268,18 +287,20 @@ namespace RifatDiplom
             this.tableLayoutPanel2.Controls.Add(this.addOrderBtn, 1, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(584, 30);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(778, 37);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(3, 0);
+            this.label1.Location = new System.Drawing.Point(4, 0);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(111, 17);
+            this.label1.Size = new System.Drawing.Size(148, 21);
             this.label1.TabIndex = 0;
             this.label1.Text = "Список заказов";
             // 
@@ -288,9 +309,10 @@ namespace RifatDiplom
             this.addOrderBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.addOrderBtn.BackColor = System.Drawing.Color.White;
             this.addOrderBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.addOrderBtn.Location = new System.Drawing.Point(470, 3);
+            this.addOrderBtn.Location = new System.Drawing.Point(626, 4);
+            this.addOrderBtn.Margin = new System.Windows.Forms.Padding(4);
             this.addOrderBtn.Name = "addOrderBtn";
-            this.addOrderBtn.Size = new System.Drawing.Size(111, 23);
+            this.addOrderBtn.Size = new System.Drawing.Size(148, 28);
             this.addOrderBtn.TabIndex = 1;
             this.addOrderBtn.Text = "Добавить заказ";
             this.addOrderBtn.UseVisualStyleBackColor = false;
@@ -326,11 +348,12 @@ namespace RifatDiplom
             this.dgvDriver.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvDriver.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.dgvDriver.GridColor = System.Drawing.Color.Black;
-            this.dgvDriver.Location = new System.Drawing.Point(0, 30);
+            this.dgvDriver.Location = new System.Drawing.Point(0, 37);
+            this.dgvDriver.Margin = new System.Windows.Forms.Padding(4);
             this.dgvDriver.MultiSelect = false;
             this.dgvDriver.Name = "dgvDriver";
             this.dgvDriver.RowHeadersWidth = 51;
-            this.dgvDriver.Size = new System.Drawing.Size(474, 488);
+            this.dgvDriver.Size = new System.Drawing.Size(633, 601);
             this.dgvDriver.TabIndex = 5;
             // 
             // dNickName
@@ -377,19 +400,21 @@ namespace RifatDiplom
             this.tableLayoutPanel3.Controls.Add(this.label2, 0, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(474, 30);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(633, 37);
             this.tableLayoutPanel3.TabIndex = 1;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(3, 0);
+            this.label2.Location = new System.Drawing.Point(4, 0);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(129, 17);
+            this.label2.Size = new System.Drawing.Size(166, 20);
             this.label2.TabIndex = 0;
             this.label2.Text = "Список водителей";
             // 
@@ -402,22 +427,22 @@ namespace RifatDiplom
             this.tableLayoutPanel4.Controls.Add(this.UpdateDriverBtn, 1, 0);
             this.tableLayoutPanel4.Controls.Add(this.UpdateOrderBtn, 0, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(2, 526);
-            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(2);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 648);
+            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(1064, 24);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(1418, 31);
             this.tableLayoutPanel4.TabIndex = 3;
             // 
             // UpdateDriverBtn
             // 
             this.UpdateDriverBtn.Dock = System.Windows.Forms.DockStyle.Right;
             this.UpdateDriverBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.UpdateDriverBtn.Location = new System.Drawing.Point(871, 2);
-            this.UpdateDriverBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.UpdateDriverBtn.Location = new System.Drawing.Point(1160, 2);
+            this.UpdateDriverBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.UpdateDriverBtn.Name = "UpdateDriverBtn";
-            this.UpdateDriverBtn.Size = new System.Drawing.Size(191, 20);
+            this.UpdateDriverBtn.Size = new System.Drawing.Size(255, 27);
             this.UpdateDriverBtn.TabIndex = 0;
             this.UpdateDriverBtn.Text = "Сохранить статус водителя";
             this.UpdateDriverBtn.UseVisualStyleBackColor = true;
@@ -427,14 +452,28 @@ namespace RifatDiplom
             // 
             this.UpdateOrderBtn.Dock = System.Windows.Forms.DockStyle.Left;
             this.UpdateOrderBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.UpdateOrderBtn.Location = new System.Drawing.Point(2, 2);
-            this.UpdateOrderBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.UpdateOrderBtn.Location = new System.Drawing.Point(3, 2);
+            this.UpdateOrderBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.UpdateOrderBtn.Name = "UpdateOrderBtn";
-            this.UpdateOrderBtn.Size = new System.Drawing.Size(191, 20);
+            this.UpdateOrderBtn.Size = new System.Drawing.Size(255, 27);
             this.UpdateOrderBtn.TabIndex = 1;
             this.UpdateOrderBtn.Text = "Сохранить статус заказа";
             this.UpdateOrderBtn.UseVisualStyleBackColor = true;
             this.UpdateOrderBtn.Click += new System.EventHandler(this.UpdateOrderBtn_Click);
+            // 
+            // CreateData
+            // 
+            this.CreateData.DataPropertyName = "DateCreate";
+            this.CreateData.HeaderText = "Дата создания";
+            this.CreateData.MinimumWidth = 6;
+            this.CreateData.Name = "CreateData";
+            // 
+            // CreateTime
+            // 
+            this.CreateTime.DataPropertyName = "TimeCreate";
+            this.CreateTime.HeaderText = "Время создания";
+            this.CreateTime.MinimumWidth = 6;
+            this.CreateTime.Name = "CreateTime";
             // 
             // cFrom
             // 
@@ -478,14 +517,15 @@ namespace RifatDiplom
             // 
             // FMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Ivory;
-            this.ClientSize = new System.Drawing.Size(1068, 576);
+            this.ClientSize = new System.Drawing.Size(1424, 709);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FMain";
             this.Text = "Диспетчерская";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FMain_FormClosing);
@@ -520,8 +560,6 @@ namespace RifatDiplom
         private System.Windows.Forms.ToolStripMenuItem справкаToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem оПрограммеToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addDriver;
-        private System.Windows.Forms.ToolStripMenuItem пользовательToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem выйтиToolStripMenuItem1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.DataGridView dgvOrders;
@@ -538,6 +576,11 @@ namespace RifatDiplom
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.Button UpdateDriverBtn;
         private System.Windows.Forms.Button UpdateOrderBtn;
+        private System.Windows.Forms.ToolStripMenuItem пользовательToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem профильToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem выйтиToolStripMenuItem2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CreateData;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CreateTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn cFrom;
         private System.Windows.Forms.DataGridViewTextBoxColumn cTo;
         private System.Windows.Forms.DataGridViewTextBoxColumn cPrice;
