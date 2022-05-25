@@ -52,17 +52,22 @@ namespace RifatDiplom
             this.label9 = new System.Windows.Forms.Label();
             this.bCancel = new System.Windows.Forms.Button();
             this.bAdd = new System.Windows.Forms.Button();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.CBStatus = new System.Windows.Forms.ComboBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.WarningL = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::RifatDiplom.Properties.Resources.taxi_png_white;
             this.pictureBox1.Location = new System.Drawing.Point(572, 27);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(177, 134);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -79,9 +84,9 @@ namespace RifatDiplom
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox1.Location = new System.Drawing.Point(17, 15);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox1.Size = new System.Drawing.Size(547, 167);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
@@ -91,7 +96,7 @@ namespace RifatDiplom
             // 
             this.Patronymic.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.Patronymic.Location = new System.Drawing.Point(161, 117);
-            this.Patronymic.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Patronymic.Margin = new System.Windows.Forms.Padding(4);
             this.Patronymic.Name = "Patronymic";
             this.Patronymic.Size = new System.Drawing.Size(376, 30);
             this.Patronymic.TabIndex = 5;
@@ -100,7 +105,7 @@ namespace RifatDiplom
             // 
             this.FirstName.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.FirstName.Location = new System.Drawing.Point(161, 71);
-            this.FirstName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.FirstName.Margin = new System.Windows.Forms.Padding(4);
             this.FirstName.Name = "FirstName";
             this.FirstName.Size = new System.Drawing.Size(376, 30);
             this.FirstName.TabIndex = 4;
@@ -109,7 +114,7 @@ namespace RifatDiplom
             // 
             this.LastName.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.LastName.Location = new System.Drawing.Point(161, 27);
-            this.LastName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.LastName.Margin = new System.Windows.Forms.Padding(4);
             this.LastName.Name = "LastName";
             this.LastName.Size = new System.Drawing.Size(376, 30);
             this.LastName.TabIndex = 3;
@@ -160,9 +165,9 @@ namespace RifatDiplom
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox2.Location = new System.Drawing.Point(17, 202);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox2.Size = new System.Drawing.Size(732, 167);
             this.groupBox2.TabIndex = 6;
             this.groupBox2.TabStop = false;
@@ -172,7 +177,7 @@ namespace RifatDiplom
             // 
             this.OfficeStreet.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.OfficeStreet.Location = new System.Drawing.Point(347, 117);
-            this.OfficeStreet.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.OfficeStreet.Margin = new System.Windows.Forms.Padding(4);
             this.OfficeStreet.Name = "OfficeStreet";
             this.OfficeStreet.Size = new System.Drawing.Size(376, 30);
             this.OfficeStreet.TabIndex = 5;
@@ -181,7 +186,7 @@ namespace RifatDiplom
             // 
             this.PhoneNumber.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.PhoneNumber.Location = new System.Drawing.Point(347, 71);
-            this.PhoneNumber.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.PhoneNumber.Margin = new System.Windows.Forms.Padding(4);
             this.PhoneNumber.Name = "PhoneNumber";
             this.PhoneNumber.Size = new System.Drawing.Size(376, 30);
             this.PhoneNumber.TabIndex = 4;
@@ -190,7 +195,7 @@ namespace RifatDiplom
             // 
             this.Email.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.Email.Location = new System.Drawing.Point(347, 27);
-            this.Email.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Email.Margin = new System.Windows.Forms.Padding(4);
             this.Email.Name = "Email";
             this.Email.Size = new System.Drawing.Size(376, 30);
             this.Email.TabIndex = 3;
@@ -239,9 +244,9 @@ namespace RifatDiplom
             this.groupBox3.Controls.Add(this.label9);
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox3.Location = new System.Drawing.Point(17, 395);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox3.Size = new System.Drawing.Size(732, 134);
             this.groupBox3.TabIndex = 7;
             this.groupBox3.TabStop = false;
@@ -251,7 +256,7 @@ namespace RifatDiplom
             // 
             this.Password.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.Password.Location = new System.Drawing.Point(347, 87);
-            this.Password.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Password.Margin = new System.Windows.Forms.Padding(4);
             this.Password.Name = "Password";
             this.Password.Size = new System.Drawing.Size(376, 30);
             this.Password.TabIndex = 4;
@@ -260,7 +265,7 @@ namespace RifatDiplom
             // 
             this.Login.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.Login.Location = new System.Drawing.Point(347, 48);
-            this.Login.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Login.Margin = new System.Windows.Forms.Padding(4);
             this.Login.Name = "Login";
             this.Login.Size = new System.Drawing.Size(376, 30);
             this.Login.TabIndex = 3;
@@ -292,8 +297,8 @@ namespace RifatDiplom
             // bCancel
             // 
             this.bCancel.BackColor = System.Drawing.Color.White;
-            this.bCancel.Location = new System.Drawing.Point(17, 537);
-            this.bCancel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.bCancel.Location = new System.Drawing.Point(17, 661);
+            this.bCancel.Margin = new System.Windows.Forms.Padding(4);
             this.bCancel.Name = "bCancel";
             this.bCancel.Size = new System.Drawing.Size(137, 42);
             this.bCancel.TabIndex = 8;
@@ -303,8 +308,8 @@ namespace RifatDiplom
             // bAdd
             // 
             this.bAdd.BackColor = System.Drawing.Color.White;
-            this.bAdd.Location = new System.Drawing.Point(612, 538);
-            this.bAdd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.bAdd.Location = new System.Drawing.Point(612, 661);
+            this.bAdd.Margin = new System.Windows.Forms.Padding(4);
             this.bAdd.Name = "bAdd";
             this.bAdd.Size = new System.Drawing.Size(137, 42);
             this.bAdd.TabIndex = 9;
@@ -312,12 +317,65 @@ namespace RifatDiplom
             this.bAdd.UseVisualStyleBackColor = false;
             this.bAdd.Click += new System.EventHandler(this.bAdd_Click);
             // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.CBStatus);
+            this.groupBox4.Controls.Add(this.label10);
+            this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.groupBox4.Location = new System.Drawing.Point(17, 552);
+            this.groupBox4.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox4.Size = new System.Drawing.Size(732, 88);
+            this.groupBox4.TabIndex = 8;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Статус";
+            // 
+            // CBStatus
+            // 
+            this.CBStatus.FormattingEnabled = true;
+            this.CBStatus.Items.AddRange(new object[] {
+            "User",
+            "Admin"});
+            this.CBStatus.Location = new System.Drawing.Point(461, 40);
+            this.CBStatus.Name = "CBStatus";
+            this.CBStatus.Size = new System.Drawing.Size(262, 33);
+            this.CBStatus.TabIndex = 1;
+            this.CBStatus.Text = "Выберите статус";
+            // 
+            // label10
+            // 
+            this.label10.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.25F);
+            this.label10.Location = new System.Drawing.Point(11, 40);
+            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(105, 32);
+            this.label10.TabIndex = 0;
+            this.label10.Text = "Статус";
+            // 
+            // WarningL
+            // 
+            this.WarningL.AutoSize = true;
+            this.WarningL.BackColor = System.Drawing.Color.White;
+            this.WarningL.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.WarningL.ForeColor = System.Drawing.Color.Red;
+            this.WarningL.Location = new System.Drawing.Point(162, 661);
+            this.WarningL.Name = "WarningL";
+            this.WarningL.Size = new System.Drawing.Size(253, 25);
+            this.WarningL.TabIndex = 10;
+            this.WarningL.Text = "Не верно введены данные";
+            this.WarningL.Visible = false;
+            // 
             // FSignUp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Ivory;
-            this.ClientSize = new System.Drawing.Size(771, 594);
+            this.ClientSize = new System.Drawing.Size(766, 720);
+            this.Controls.Add(this.WarningL);
+            this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.bAdd);
             this.Controls.Add(this.bCancel);
             this.Controls.Add(this.groupBox3);
@@ -338,7 +396,10 @@ namespace RifatDiplom
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -366,5 +427,9 @@ namespace RifatDiplom
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button bCancel;
         private System.Windows.Forms.Button bAdd;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.ComboBox CBStatus;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label WarningL;
     }
 }

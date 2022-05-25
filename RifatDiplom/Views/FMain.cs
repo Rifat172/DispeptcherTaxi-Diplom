@@ -18,7 +18,7 @@ namespace RifatDiplom
             if (_disp.OpenSQLConn() == 1)
             {
                 DataRow RowStatus = _disp.SELECTDispatcher(Id).Rows[0];
-                if ((string)RowStatus["Status"] == "admin")
+                if ((string)RowStatus["Status"] == "Admin")
                     addUser.Visible = true;
                 else
                     addUser.Visible = false;
