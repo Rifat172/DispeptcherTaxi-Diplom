@@ -15,11 +15,8 @@ namespace RifatDiplom
 {
     public partial class FSignIn : Form
     {
-        object Status;
-        int Id;
-        bool IsAdmin = false;
-
         SQLDispatcherWithLogin sqlDispatcher = null;
+        int CurrentUserId = 0;
         public FSignIn()
         {
             InitializeComponent();
@@ -30,33 +27,21 @@ namespace RifatDiplom
 
             if (sqlDispatcher.OpenSQLConn() == 1)
             {
-                var Login = sqlDispatcher.SELECTLogin(tbLogin.Text, tbPassword.Text);
+                DataTable Login = sqlDispatcher.SELECTLogin(tbLogin.Text, tbPassword.Text);
                 if(Login.Rows.Count == 0)
                 {
                     label2.Visible = true;
+                    return;
                 }
                 else
                 {
                     label2.Visible = false;
-
-                    DataRow Ldata = Login.Rows[0];
-                    Id = (int)Ldata["Id"];
-                    var Dispather = sqlDispatcher.SELECTDispatcher(Id);
-
-                    DataRow Ldis = Dispather.Rows[0];
-                    if ((string)Ldis["Status"] == "Admin")
-                    {
-                        IsAdmin = true;
-                    }
-                    else
-                    {
-                        IsAdmin = false;
-                    }
+                    CurrentUserId = (int)Login.Rows[0]["Id"];
                 }
             }
             sqlDispatcher.CloseSqlConn();
 
-            Form enter = new FMain(Id, IsAdmin);
+            Form enter = new FMain(CurrentUserId);
             enter.Show();
             this.Hide();
         }

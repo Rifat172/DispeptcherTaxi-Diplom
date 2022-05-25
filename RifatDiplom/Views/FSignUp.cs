@@ -16,5 +16,10 @@ namespace RifatDiplom
         {
             InitializeComponent();
         }
+
+        private void bAdd_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

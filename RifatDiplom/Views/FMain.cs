@@ -1,19 +1,36 @@
 ﻿using System;
 using System.Windows.Forms;
+using RifatDiplom.Model.Dispatcher;
 using RifatDiplom.Model.Driver;
 using RifatDiplom.Model.Order;
 using RifatDiplom.Views;
+using System.Data;
 
 namespace RifatDiplom
 {
     public partial class FMain : Form
     {
         int CurrentUserId = 0;
+        #region Установка роли
+        private void SETRule(int Id)
+        {
+            SQLDispatcherWithLogin _disp = new SQLDispatcherWithLogin();
+            if (_disp.OpenSQLConn() == 1)
+            {
+                DataRow RowStatus = _disp.SELECTDispatcher(Id).Rows[0];
+                if ((string)RowStatus["Status"] == "admin")
+                    addUser.Visible = true;
+                else
+                    addUser.Visible = false;
+                _disp.CloseSqlConn();
+            }
+            _disp.CloseSqlConn();
+        }
+        #endregion
         #region Views
         public delegate void MyEventHandler();
         public event MyEventHandler DisableLists = delegate { };
         public event MyEventHandler EnableLists = delegate { };
-
 
         private bool _isBothListDisabled = false; //если false то оба списка не отключены    
         private bool IsBothListDisabled
@@ -35,11 +52,11 @@ namespace RifatDiplom
                 }
             }
         }
-        public FMain(object Id, bool isAdmin)
+        public FMain(int Id)
         {
             InitializeComponent();
-            CurrentUserId = (int)Id;
-            addUser.Visible = isAdmin;
+            SETRule(Id);
+            CurrentUserId = Id;
             DisableLists += DisabledSplit;
             EnableLists += EnabledSplit;
         }
@@ -149,6 +166,8 @@ namespace RifatDiplom
         {
             LoadData();
         }
+
+        #region загрузка и обновление данных
         private void LoadData()
         {
             dgvDriver.AutoGenerateColumns = false;
@@ -211,6 +230,7 @@ namespace RifatDiplom
                 MessageBox.Show("Данные сохранены", "Успешно");
             }
         }
+        #endregion
 
         private void addOrderBtn_Click(object sender, EventArgs e)
         {

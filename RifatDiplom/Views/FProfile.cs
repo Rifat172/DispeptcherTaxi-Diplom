@@ -8,56 +8,91 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using RifatDiplom.Model.Dispatcher;
 
 namespace RifatDiplom.Views
 {
     public partial class FProfile : Form
     {
-        int Id;
-        public FProfile(int _Id)
+        int CurrentUserId = 0;
+        bool FormChanged = false;
+        public FProfile(int Id)
         {
             InitializeComponent();
-            Id = _Id;
-            LoadData();
+            CurrentUserId = Id;
+            LoadCurrentDistData();
         }
 
-        private void LoadData()
+        private void LoadCurrentDistData()
         {
-            using (SqlConnection connection = new SqlConnection(Properties.Settings.Default.DispatcherConn))
+            SQLDispatcherWithLogin sqlDispatcher = new SQLDispatcherWithLogin();
+            if (sqlDispatcher.OpenSQLConn() == 1)
             {
-                string sql = "SELECT * FROM DispatcherTableData WHERE Id = @Id";
-                using (SqlCommand sqlCommand = new SqlCommand(sql, connection))
+                try
                 {
-                    sqlCommand.Parameters.Add(new SqlParameter("@Id", SqlDbType.Int));
-                    sqlCommand.Parameters["@Id"].Value = Id;
+                    var cuurentDispTable = sqlDispatcher.SELECTDispatcher(CurrentUserId);
+                    var currentDispRow = cuurentDispTable.Rows[0];
+                    FirstName.Text = currentDispRow["FirstName"].ToString();
+                    LastName.Text = currentDispRow["LastName"].ToString();
+                    Patronymic.Text = currentDispRow["Patronymic"].ToString();
+                    Email.Text = currentDispRow["Email"].ToString();
+                    PhoneNumber.Text = currentDispRow["PhoneNumber"].ToString();
+                    OfficeStreet.Text = currentDispRow["OfficeStreet"].ToString();
+                    Status.Text = currentDispRow["Status"].ToString();
 
-                    try
+                    if (currentDispRow["Status"].ToString() == "admin")
                     {
-                        connection.Open();
-                        using (SqlDataReader dataReader = sqlCommand.ExecuteReader())
-                        {
-                            dataReader.Read();
-                            FirstName.Text = dataReader["FirstName"].ToString();
-                            LastName.Text = dataReader["LastName"].ToString();
-                            Patronymic.Text = dataReader["Patronymic"].ToString();
-                            Email.Text = dataReader["Email"].ToString();
-                            PhoneNumber.Text = dataReader["PhoneNumber"].ToString();
-                            OfficeStreet.Text = dataReader["OfficeStreet"].ToString();
-                            Status.Text = dataReader["Status"].ToString();
-                            dataReader.Close();
-                        }
+                        ChangeForm();
+                        LoadAllDispachers();
                     }
-                    catch (Exception ex)
+                    else
                     {
-                        MessageBox.Show(ex.ToString());
-                    }
-                    finally
-                    {
-                        // Close connection.
-                        connection.Close();
+                        DefaultForm();
                     }
                 }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
             }
+            sqlDispatcher.CloseSqlConn();
+        }
+
+        private void LoadAllDispachers()
+        {
+            SQLDispatcherWithLogin sqlDispatcher = new SQLDispatcherWithLogin();
+            if (sqlDispatcher.OpenSQLConn() == 1)
+            {
+                CBSelectDispatcher.DataSource = sqlDispatcher.SELECTDispatcher();
+                CBSelectDispatcher.DisplayMember = "FIO";
+                CBSelectDispatcher.ValueMember = "Id";
+            }
+        }
+
+        int HeightAdd = 90;
+        private void ChangeForm()
+        {
+            this.Height += HeightAdd;
+            EditPanel.Visible = true;
+            FormChanged = true;
+        }
+        private void DefaultForm()
+        {
+            if (FormChanged)
+            {
+                FormChanged = false;
+                this.Height -= HeightAdd;
+                EditPanel.Visible = false;
+            }
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            DataRowView SelectedUser = (DataRowView)CBSelectDispatcher.SelectedItem;
+            int SelectedId = (int)SelectedUser["Id"];
+            Form edit = new FEditDispatcherData(SelectedId);
+            edit.ShowDialog();
+
         }
     }
 }
