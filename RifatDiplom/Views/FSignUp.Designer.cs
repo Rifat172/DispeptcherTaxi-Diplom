@@ -304,6 +304,7 @@ namespace RifatDiplom
             this.bCancel.TabIndex = 8;
             this.bCancel.Text = "Отмена";
             this.bCancel.UseVisualStyleBackColor = false;
+            this.bCancel.Click += new System.EventHandler(this.bCancel_Click);
             // 
             // bAdd
             // 
@@ -361,7 +362,7 @@ namespace RifatDiplom
             this.WarningL.BackColor = System.Drawing.Color.White;
             this.WarningL.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.WarningL.ForeColor = System.Drawing.Color.Red;
-            this.WarningL.Location = new System.Drawing.Point(162, 661);
+            this.WarningL.Location = new System.Drawing.Point(161, 667);
             this.WarningL.Name = "WarningL";
             this.WarningL.Size = new System.Drawing.Size(253, 25);
             this.WarningL.TabIndex = 10;

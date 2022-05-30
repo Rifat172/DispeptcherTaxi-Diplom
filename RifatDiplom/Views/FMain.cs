@@ -242,8 +242,10 @@ namespace RifatDiplom
 
         private void addDriver_Click(object sender, EventArgs e)
         {
-            Form driver = new FAddDriver();
-            driver.Show();
+            Form driver = new FAddDriver(sqlDriver);
+            driver.ShowDialog();
+            LoadDriver(sqlDriver);
+            dgvDriver.Refresh();
         }
     }
 }

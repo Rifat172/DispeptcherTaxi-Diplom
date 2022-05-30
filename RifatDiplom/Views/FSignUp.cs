@@ -20,8 +20,6 @@ namespace RifatDiplom
 
         private void bAdd_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(CBStatus.SelectedIndex.ToString());
-            MessageBox.Show(CBStatus.SelectedItem.ToString());
             if (CheckValidData())
             {
                 SQLDispatcherWithLogin sqlDispatcher = new SQLDispatcherWithLogin();
@@ -29,6 +27,7 @@ namespace RifatDiplom
                 {
                     sqlDispatcher.INSERTDispatcher(FirstName.Text, LastName.Text, Patronymic.Text, Email.Text, PhoneNumber.Text, OfficeStreet.Text, CBStatus.SelectedItem.ToString(), Login.Text, Password.Text);
                 }
+                this.Hide();
             }
         }
 
@@ -43,9 +42,9 @@ namespace RifatDiplom
             return false;
         }
 
-        private void FSignUp_Load(object sender, EventArgs e)
+        private void bCancel_Click(object sender, EventArgs e)
         {
-            CBStatus.SelectedText = "";
+            this.Hide();
         }
     }
 }

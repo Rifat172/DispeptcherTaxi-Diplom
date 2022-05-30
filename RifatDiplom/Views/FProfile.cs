@@ -40,7 +40,7 @@ namespace RifatDiplom.Views
                     OfficeStreet.Text = currentDispRow["OfficeStreet"].ToString();
                     Status.Text = currentDispRow["Status"].ToString();
 
-                    if (currentDispRow["Status"].ToString() == "admin")
+                    if (currentDispRow["Status"].ToString() == "Admin")
                     {
                         ChangeForm();
                         LoadAllDispachers();
