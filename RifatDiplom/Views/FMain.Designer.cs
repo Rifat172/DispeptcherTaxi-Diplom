@@ -457,7 +457,7 @@ namespace RifatDiplom
             this.UpdateOrderBtn.Name = "UpdateOrderBtn";
             this.UpdateOrderBtn.Size = new System.Drawing.Size(255, 27);
             this.UpdateOrderBtn.TabIndex = 1;
-            this.UpdateOrderBtn.Text = "Сохранить статус заказа";
+            this.UpdateOrderBtn.Text = "Сохранить статус/водителя заказа";
             this.UpdateOrderBtn.UseVisualStyleBackColor = true;
             this.UpdateOrderBtn.Click += new System.EventHandler(this.UpdateOrderBtn_Click);
             // 
@@ -511,7 +511,6 @@ namespace RifatDiplom
             this.cDriver.HeaderText = "Водитель";
             this.cDriver.MinimumWidth = 6;
             this.cDriver.Name = "cDriver";
-            this.cDriver.ReadOnly = true;
             this.cDriver.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.cDriver.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 

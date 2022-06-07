@@ -245,7 +245,9 @@ namespace RifatDiplom
             Form driver = new FAddDriver(sqlDriver);
             driver.ShowDialog();
             LoadDriver(sqlDriver);
+            LoadOrder(sqlOrder);
             dgvDriver.Refresh();
+            dgvOrders.Refresh();
         }
     }
 }
