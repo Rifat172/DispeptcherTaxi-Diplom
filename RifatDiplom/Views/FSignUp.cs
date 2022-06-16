@@ -33,7 +33,8 @@ namespace RifatDiplom
 
         private bool CheckValidData()
         {
-            if (!String.IsNullOrWhiteSpace(FirstName.Text) && !string.IsNullOrWhiteSpace(LastName.Text) && !string.IsNullOrWhiteSpace(Email.Text) && !string.IsNullOrWhiteSpace(PhoneNumber.Text) && !string.IsNullOrWhiteSpace(OfficeStreet.Text) && !string.IsNullOrWhiteSpace(Login.Text) && !string.IsNullOrWhiteSpace(Password.Text) && CBStatus.SelectedIndex != -1)
+            if (!String.IsNullOrWhiteSpace(FirstName.Text) && !string.IsNullOrWhiteSpace(LastName.Text) && !string.IsNullOrWhiteSpace(Email.Text) && !string.IsNullOrWhiteSpace(PhoneNumber.Text) && !string.IsNullOrWhiteSpace(OfficeStreet.Text) && !string.IsNullOrWhiteSpace(Login.Text) && !string.IsNullOrWhiteSpace(Password.Text) && CBStatus.SelectedIndex != -1 ||
+                FirstName.Text.Length > 50 || LastName.Text.Length > 50 || Patronymic.Text.Length > 50 || Email.Text.Length > 50 || PhoneNumber.Text.Length > 20 || OfficeStreet.Text.Length > 60 || Login.Text.Length > 25 || Password.Text.Length > 25)
             {
                 WarningL.Visible = false;
                 return true;

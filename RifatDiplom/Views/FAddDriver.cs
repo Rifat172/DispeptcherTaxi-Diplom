@@ -22,7 +22,7 @@ namespace RifatDiplom.Views
 
         private bool CheckValidData()
         {
-            if (!String.IsNullOrWhiteSpace(FirstName.Text) && !string.IsNullOrWhiteSpace(SecondName.Text) && !string.IsNullOrWhiteSpace(NickName.Text) && !string.IsNullOrWhiteSpace(Car.Text) && !string.IsNullOrWhiteSpace(PhoneNumber.Text) && CBStatus.SelectedIndex != -1)
+            if (!String.IsNullOrWhiteSpace(FirstName.Text) && !string.IsNullOrWhiteSpace(SecondName.Text) && !string.IsNullOrWhiteSpace(NickName.Text) && !string.IsNullOrWhiteSpace(Car.Text) && !string.IsNullOrWhiteSpace(PhoneNumber.Text) && CBStatus.SelectedIndex != -1 || FirstName.Text.Length > 50 || SecondName.Text.Length > 50 || ThirdName.Text.Length > 50 || NickName.Text.Length > 50 || Car.Text.Length > 50 || PhoneNumber.Text.Length > 25)
             {
                 WarningL.Visible = false;
                 return true;

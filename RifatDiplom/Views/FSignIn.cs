@@ -21,29 +21,42 @@ namespace RifatDiplom
         {
             InitializeComponent();
         }
+
+        private bool CheckValidData()
+        {
+            if (!String.IsNullOrWhiteSpace(tbLogin.Text) && !string.IsNullOrWhiteSpace(tbPassword.Text) || tbLogin.Text.Length > 25 || tbPassword.Text.Length > 25)
+            {
+                WarningL.Visible = false;
+                return true;
+            }
+            WarningL.Visible = true;
+            return false;
+        }
         private void bsubmit_Click(object sender, EventArgs e)
         {
-            sqlDispatcher = new SQLDispatcherWithLogin();
-
-            if (sqlDispatcher.OpenSQLConn() == 1)
+            if (CheckValidData())
             {
-                DataTable Login = sqlDispatcher.SELECTLogin(tbLogin.Text, tbPassword.Text);
-                if(Login.Rows.Count == 0)
+                sqlDispatcher = new SQLDispatcherWithLogin();
+                if (sqlDispatcher.OpenSQLConn() == 1)
                 {
-                    label2.Visible = true;
-                    return;
+                    DataTable Login = sqlDispatcher.SELECTLogin(tbLogin.Text, tbPassword.Text);
+                    if (Login.Rows.Count == 0)
+                    {
+                        WarningL.Visible = true;
+                        return;
+                    }
+                    else
+                    {
+                        WarningL.Visible = false;
+                        CurrentUserId = (int)Login.Rows[0]["Id"];
+                    }
                 }
-                else
-                {
-                    label2.Visible = false;
-                    CurrentUserId = (int)Login.Rows[0]["Id"];
-                }
-            }
-            sqlDispatcher.CloseSqlConn();
+                sqlDispatcher.CloseSqlConn();
 
-            Form enter = new FMain(CurrentUserId);
-            enter.Show();
-            this.Hide();
+                Form enter = new FMain(CurrentUserId);
+                enter.Show();
+                this.Hide();
+            }
         }
     }
 }

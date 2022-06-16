@@ -35,7 +35,7 @@ namespace RifatDiplom
             this.tbLogin = new System.Windows.Forms.TextBox();
             this.tbPassword = new System.Windows.Forms.TextBox();
             this.bsubmit = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
+            this.WarningL = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // LLogin
@@ -73,6 +73,7 @@ namespace RifatDiplom
             this.tbPassword.Location = new System.Drawing.Point(95, 201);
             this.tbPassword.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbPassword.Name = "tbPassword";
+            this.tbPassword.PasswordChar = '*';
             this.tbPassword.Size = new System.Drawing.Size(333, 38);
             this.tbPassword.TabIndex = 3;
             // 
@@ -89,18 +90,18 @@ namespace RifatDiplom
             this.bsubmit.UseVisualStyleBackColor = false;
             this.bsubmit.Click += new System.EventHandler(this.bsubmit_Click);
             // 
-            // label2
+            // WarningL
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.ForeColor = System.Drawing.Color.Red;
-            this.label2.Location = new System.Drawing.Point(76, 31);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(332, 25);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "Не верно введен логин или пароль";
-            this.label2.Visible = false;
+            this.WarningL.AutoSize = true;
+            this.WarningL.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.WarningL.ForeColor = System.Drawing.Color.Red;
+            this.WarningL.Location = new System.Drawing.Point(76, 31);
+            this.WarningL.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.WarningL.Name = "WarningL";
+            this.WarningL.Size = new System.Drawing.Size(332, 25);
+            this.WarningL.TabIndex = 6;
+            this.WarningL.Text = "Не верно введен логин или пароль";
+            this.WarningL.Visible = false;
             // 
             // FSignIn
             // 
@@ -109,7 +110,7 @@ namespace RifatDiplom
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Ivory;
             this.ClientSize = new System.Drawing.Size(512, 329);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.WarningL);
             this.Controls.Add(this.bsubmit);
             this.Controls.Add(this.tbPassword);
             this.Controls.Add(this.tbLogin);
@@ -134,7 +135,7 @@ namespace RifatDiplom
         private System.Windows.Forms.TextBox tbLogin;
         private System.Windows.Forms.TextBox tbPassword;
         private System.Windows.Forms.Button bsubmit;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label WarningL;
     }
 }
 

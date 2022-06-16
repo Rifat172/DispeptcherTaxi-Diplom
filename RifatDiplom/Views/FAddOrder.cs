@@ -36,9 +36,11 @@ namespace RifatDiplom
 
                 int Id_Driver = 0;
                 if (DriverRow != null)
+                {
                     Id_Driver = (int)DriverRow["Id"];
+                }
 
-                var state = Order.INSERTOrder(tbFrom.Text, tbTo.Text, GetPrice(), (cbStatus.SelectedIndex + 1), Id_Driver, DateTime.Now.ToString("d"), DateTime.Now.ToLongTimeString());
+                var state = Order.INSERTOrder(tbFrom.Text, tbTo.Text, GetPrice(), (cbStatus.SelectedIndex + 1), Id_Driver, DateTime.Now.ToString("d"), DateTime.Now.ToLongTimeString(), PhoneNumber.Text);
                 Order.OrderDS.AcceptChanges();
                 this.Close();
             }
@@ -88,7 +90,7 @@ namespace RifatDiplom
                 LWarning.Visible = false;
                 Valid = false;
             }
-            if (String.IsNullOrWhiteSpace(tbFrom.Text) || String.IsNullOrWhiteSpace(tbTo.Text))
+            if (String.IsNullOrWhiteSpace(tbFrom.Text) || String.IsNullOrWhiteSpace(tbTo.Text) || String.IsNullOrWhiteSpace(PhoneNumber.Text) || tbFrom.Text.Length > 50 || tbTo.Text.Length > 50 || PhoneNumber.Text.Length > 20)
             {
                 LWarningPoint.Visible = true;
                 Valid = false;

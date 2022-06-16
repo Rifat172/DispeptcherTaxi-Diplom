@@ -51,6 +51,14 @@ namespace RifatDiplom
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.dgvOrders = new System.Windows.Forms.DataGridView();
+            this.CreateData = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CreateTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.phoneNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cFrom = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cTo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cStatus = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.cDriver = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.addOrderBtn = new System.Windows.Forms.Button();
@@ -64,13 +72,6 @@ namespace RifatDiplom
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.UpdateDriverBtn = new System.Windows.Forms.Button();
             this.UpdateOrderBtn = new System.Windows.Forms.Button();
-            this.CreateData = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CreateTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cFrom = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cTo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cStatus = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.cDriver = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.menuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -107,14 +108,14 @@ namespace RifatDiplom
             this.выйтиToolStripMenuItem});
             this.фаилToolStripMenuItem.Name = "фаилToolStripMenuItem";
             this.фаилToolStripMenuItem.Size = new System.Drawing.Size(59, 24);
-            this.фаилToolStripMenuItem.Text = "Фаил";
+            this.фаилToolStripMenuItem.Text = "Файл";
             // 
             // ListDrivers
             // 
             this.ListDrivers.Checked = true;
             this.ListDrivers.CheckState = System.Windows.Forms.CheckState.Checked;
             this.ListDrivers.Name = "ListDrivers";
-            this.ListDrivers.Size = new System.Drawing.Size(219, 26);
+            this.ListDrivers.Size = new System.Drawing.Size(224, 26);
             this.ListDrivers.Text = "Список водителей";
             this.ListDrivers.Click += new System.EventHandler(this.ListDrivers_Click);
             // 
@@ -123,14 +124,14 @@ namespace RifatDiplom
             this.ListOrder.Checked = true;
             this.ListOrder.CheckState = System.Windows.Forms.CheckState.Checked;
             this.ListOrder.Name = "ListOrder";
-            this.ListOrder.Size = new System.Drawing.Size(219, 26);
+            this.ListOrder.Size = new System.Drawing.Size(224, 26);
             this.ListOrder.Text = "Список заказов";
             this.ListOrder.Click += new System.EventHandler(this.ListOrder_Click);
             // 
             // выйтиToolStripMenuItem
             // 
             this.выйтиToolStripMenuItem.Name = "выйтиToolStripMenuItem";
-            this.выйтиToolStripMenuItem.Size = new System.Drawing.Size(219, 26);
+            this.выйтиToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.выйтиToolStripMenuItem.Text = "Выход";
             this.выйтиToolStripMenuItem.Click += new System.EventHandler(this.выйтиToolStripMenuItem_Click);
             // 
@@ -146,14 +147,14 @@ namespace RifatDiplom
             // профильToolStripMenuItem
             // 
             this.профильToolStripMenuItem.Name = "профильToolStripMenuItem";
-            this.профильToolStripMenuItem.Size = new System.Drawing.Size(156, 26);
+            this.профильToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.профильToolStripMenuItem.Text = "Профиль";
             this.профильToolStripMenuItem.Click += new System.EventHandler(this.профильToolStripMenuItem_Click);
             // 
             // выйтиToolStripMenuItem2
             // 
             this.выйтиToolStripMenuItem2.Name = "выйтиToolStripMenuItem2";
-            this.выйтиToolStripMenuItem2.Size = new System.Drawing.Size(156, 26);
+            this.выйтиToolStripMenuItem2.Size = new System.Drawing.Size(224, 26);
             this.выйтиToolStripMenuItem2.Text = "Выйти";
             this.выйтиToolStripMenuItem2.Click += new System.EventHandler(this.выйтиToolStripMenuItem2_Click);
             // 
@@ -193,7 +194,7 @@ namespace RifatDiplom
             // оПрограммеToolStripMenuItem
             // 
             this.оПрограммеToolStripMenuItem.Name = "оПрограммеToolStripMenuItem";
-            this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(187, 26);
+            this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.оПрограммеToolStripMenuItem.Text = "О программе";
             this.оПрограммеToolStripMenuItem.Click += new System.EventHandler(this.оПрограммеToolStripMenuItem_Click);
             // 
@@ -254,6 +255,7 @@ namespace RifatDiplom
             this.dgvOrders.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CreateData,
             this.CreateTime,
+            this.phoneNumber,
             this.cFrom,
             this.cTo,
             this.cPrice,
@@ -277,6 +279,66 @@ namespace RifatDiplom
             this.dgvOrders.RowHeadersWidth = 51;
             this.dgvOrders.Size = new System.Drawing.Size(778, 601);
             this.dgvOrders.TabIndex = 6;
+            // 
+            // CreateData
+            // 
+            this.CreateData.DataPropertyName = "DateCreate";
+            this.CreateData.HeaderText = "Дата создания";
+            this.CreateData.MinimumWidth = 6;
+            this.CreateData.Name = "CreateData";
+            // 
+            // CreateTime
+            // 
+            this.CreateTime.DataPropertyName = "TimeCreate";
+            this.CreateTime.HeaderText = "Время создания";
+            this.CreateTime.MinimumWidth = 6;
+            this.CreateTime.Name = "CreateTime";
+            // 
+            // phoneNumber
+            // 
+            this.phoneNumber.DataPropertyName = "PhoneNumber";
+            this.phoneNumber.HeaderText = "Номер телефона";
+            this.phoneNumber.MinimumWidth = 6;
+            this.phoneNumber.Name = "phoneNumber";
+            // 
+            // cFrom
+            // 
+            this.cFrom.DataPropertyName = "PointA";
+            this.cFrom.HeaderText = "Откуда";
+            this.cFrom.MinimumWidth = 6;
+            this.cFrom.Name = "cFrom";
+            // 
+            // cTo
+            // 
+            this.cTo.DataPropertyName = "PointB";
+            this.cTo.HeaderText = "Куда";
+            this.cTo.MinimumWidth = 6;
+            this.cTo.Name = "cTo";
+            // 
+            // cPrice
+            // 
+            this.cPrice.DataPropertyName = "Price";
+            this.cPrice.HeaderText = "Стоимость";
+            this.cPrice.MinimumWidth = 6;
+            this.cPrice.Name = "cPrice";
+            // 
+            // cStatus
+            // 
+            this.cStatus.DataPropertyName = "Id_OrderStatus";
+            this.cStatus.HeaderText = "Статус";
+            this.cStatus.MinimumWidth = 6;
+            this.cStatus.Name = "cStatus";
+            this.cStatus.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.cStatus.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // cDriver
+            // 
+            this.cDriver.DataPropertyName = "Id_Driver";
+            this.cDriver.HeaderText = "Водитель";
+            this.cDriver.MinimumWidth = 6;
+            this.cDriver.Name = "cDriver";
+            this.cDriver.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.cDriver.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // tableLayoutPanel2
             // 
@@ -461,59 +523,6 @@ namespace RifatDiplom
             this.UpdateOrderBtn.UseVisualStyleBackColor = true;
             this.UpdateOrderBtn.Click += new System.EventHandler(this.UpdateOrderBtn_Click);
             // 
-            // CreateData
-            // 
-            this.CreateData.DataPropertyName = "DateCreate";
-            this.CreateData.HeaderText = "Дата создания";
-            this.CreateData.MinimumWidth = 6;
-            this.CreateData.Name = "CreateData";
-            // 
-            // CreateTime
-            // 
-            this.CreateTime.DataPropertyName = "TimeCreate";
-            this.CreateTime.HeaderText = "Время создания";
-            this.CreateTime.MinimumWidth = 6;
-            this.CreateTime.Name = "CreateTime";
-            // 
-            // cFrom
-            // 
-            this.cFrom.DataPropertyName = "PointA";
-            this.cFrom.HeaderText = "Откуда";
-            this.cFrom.MinimumWidth = 6;
-            this.cFrom.Name = "cFrom";
-            // 
-            // cTo
-            // 
-            this.cTo.DataPropertyName = "PointB";
-            this.cTo.HeaderText = "Куда";
-            this.cTo.MinimumWidth = 6;
-            this.cTo.Name = "cTo";
-            // 
-            // cPrice
-            // 
-            this.cPrice.DataPropertyName = "Price";
-            this.cPrice.HeaderText = "Стоимость";
-            this.cPrice.MinimumWidth = 6;
-            this.cPrice.Name = "cPrice";
-            // 
-            // cStatus
-            // 
-            this.cStatus.DataPropertyName = "Id_OrderStatus";
-            this.cStatus.HeaderText = "Статус";
-            this.cStatus.MinimumWidth = 6;
-            this.cStatus.Name = "cStatus";
-            this.cStatus.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.cStatus.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // cDriver
-            // 
-            this.cDriver.DataPropertyName = "Id_Driver";
-            this.cDriver.HeaderText = "Водитель";
-            this.cDriver.MinimumWidth = 6;
-            this.cDriver.Name = "cDriver";
-            this.cDriver.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.cDriver.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
             // FMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -580,6 +589,7 @@ namespace RifatDiplom
         private System.Windows.Forms.ToolStripMenuItem выйтиToolStripMenuItem2;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateData;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateTime;
+        private System.Windows.Forms.DataGridViewTextBoxColumn phoneNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn cFrom;
         private System.Windows.Forms.DataGridViewTextBoxColumn cTo;
         private System.Windows.Forms.DataGridViewTextBoxColumn cPrice;

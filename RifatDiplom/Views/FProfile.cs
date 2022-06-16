@@ -42,8 +42,8 @@ namespace RifatDiplom.Views
 
                     if (currentDispRow["Status"].ToString() == "Admin")
                     {
-                        ChangeForm();
-                        LoadAllDispachers();
+                        if (LoadAllDispachers())//если комбо бокс с диспетчерами не пустой, то расширить форму
+                            ChangeForm();
                     }
                     else
                     {
@@ -58,7 +58,7 @@ namespace RifatDiplom.Views
             sqlDispatcher.CloseSqlConn();
         }
 
-        private void LoadAllDispachers()
+        private bool LoadAllDispachers()
         {
             SQLDispatcherWithLogin sqlDispatcher = new SQLDispatcherWithLogin();
             if (sqlDispatcher.OpenSQLConn() == 1)
@@ -67,6 +67,10 @@ namespace RifatDiplom.Views
                 CBSelectDispatcher.DisplayMember = "FIO";
                 CBSelectDispatcher.ValueMember = "Id";
             }
+            if (CBSelectDispatcher.Items.Count >= 1)
+                return true;
+            else
+                return false;
         }
 
         int HeightAdd = 90;

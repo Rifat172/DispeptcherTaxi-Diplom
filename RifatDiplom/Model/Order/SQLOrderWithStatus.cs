@@ -62,15 +62,15 @@ namespace RifatDiplom.Model.Order
 
             return state;
         }
-        public int INSERTOrder(string PointA, string PointB, int Price, int Id_OrderStatus, int id_Driver, string date, string time)
+        public int INSERTOrder(string PointA, string PointB, int Price, int Id_OrderStatus, int id_Driver, string date, string time, string PhoneNumber)
         {
             int state = 0;
 
             SqlCommandBuilder commandBuilder = new SqlCommandBuilder(OrderAd);
 
             OrderAd.InsertCommand = new SqlCommand("INSERT INTO [Orders] " +
-                "([PointA], [PointB], [Price], [Id_OrderStatus], [id_Driver], [TimeCreate], [DateCreate]) VALUES " +
-                "(@PointA,  @PointB,  @Price,  @Id_OrderStatus,  @id_Driver,  @TimeCreate, @DateCreate)", sqlConnection);
+                "([PointA], [PointB], [Price], [Id_OrderStatus], [id_Driver], [TimeCreate], [DateCreate], [PhoneNumber]) VALUES " +
+                "(@PointA,  @PointB,  @Price,  @Id_OrderStatus,  @id_Driver,  @TimeCreate, @DateCreate, @PhoneNumber)", sqlConnection);
 
             OrderAd.InsertCommand.Parameters.Add("@PointA", SqlDbType.NVarChar, 50);
             OrderAd.InsertCommand.Parameters["@PointA"].Value = PointA;
@@ -96,6 +96,9 @@ namespace RifatDiplom.Model.Order
 
             OrderAd.InsertCommand.Parameters.Add("@DateCreate", SqlDbType.Date);
             OrderAd.InsertCommand.Parameters["@DateCreate"].Value = date;
+
+            OrderAd.InsertCommand.Parameters.Add("@PhoneNumber", SqlDbType.NVarChar, 20);
+            OrderAd.InsertCommand.Parameters["@PhoneNumber"].Value = PhoneNumber;
 
             state = OrderAd.Update(OrderDS, OrderDS.Tables[0].TableName);
 

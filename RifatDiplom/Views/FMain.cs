@@ -237,7 +237,9 @@ namespace RifatDiplom
             Form FAdd = new FAddOrder(sqlDriver, sqlOrder);
             FAdd.ShowDialog();
             LoadOrder(sqlOrder);
+            LoadDriver(sqlDriver);
             dgvOrders.Refresh();
+            dgvDriver.Refresh();
         }
 
         private void addDriver_Click(object sender, EventArgs e)

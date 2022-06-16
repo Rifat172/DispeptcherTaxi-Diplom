@@ -43,6 +43,7 @@ namespace RifatDiplom.Views
             this.Login = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
+            this.WarningL = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.SuspendLayout();
@@ -203,6 +204,19 @@ namespace RifatDiplom.Views
             this.label9.TabIndex = 0;
             this.label9.Text = "Логин";
             // 
+            // WarningL
+            // 
+            this.WarningL.AutoSize = true;
+            this.WarningL.BackColor = System.Drawing.Color.White;
+            this.WarningL.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.WarningL.ForeColor = System.Drawing.Color.Red;
+            this.WarningL.Location = new System.Drawing.Point(12, 337);
+            this.WarningL.Name = "WarningL";
+            this.WarningL.Size = new System.Drawing.Size(253, 25);
+            this.WarningL.TabIndex = 14;
+            this.WarningL.Text = "Не верно введены данные";
+            this.WarningL.Visible = false;
+            // 
             // FEditDispatcherData
             // 
             this.AcceptButton = this.btnEdit;
@@ -210,6 +224,7 @@ namespace RifatDiplom.Views
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Ivory;
             this.ClientSize = new System.Drawing.Size(577, 383);
+            this.Controls.Add(this.WarningL);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnEdit);
@@ -222,6 +237,7 @@ namespace RifatDiplom.Views
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -240,5 +256,6 @@ namespace RifatDiplom.Views
         private System.Windows.Forms.TextBox Login;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label WarningL;
     }
 }

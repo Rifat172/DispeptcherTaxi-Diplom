@@ -47,22 +47,36 @@ namespace RifatDiplom.Views
             }
         }
 
+        private bool CheckValidDate()
+        {
+            if (!String.IsNullOrWhiteSpace(Login.Text) && !string.IsNullOrWhiteSpace(Password.Text) || Login.Text.Length > 25 || Password.Text.Length > 25)
+            {
+                WarningL.Visible = false;
+                return true;
+            }
+            WarningL.Visible = true;
+            return false;
+        }
+
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            SQLDispatcherWithLogin sqlDispatcher = new SQLDispatcherWithLogin();
-            if (sqlDispatcher.OpenSQLConn() == 1)
+            if (CheckValidDate())
             {
-                var state = sqlDispatcher.UPDATELogin(Login.Text, Password.Text, SelectedId);
-                if (state == 0)
+                SQLDispatcherWithLogin sqlDispatcher = new SQLDispatcherWithLogin();
+                if (sqlDispatcher.OpenSQLConn() == 1)
                 {
-                    MessageBox.Show("Данные не были изменены", "Предупреждение");
+                    var state = sqlDispatcher.UPDATELogin(Login.Text, Password.Text, SelectedId);
+                    if (state == 0)
+                    {
+                        MessageBox.Show("Данные не были изменены", "Предупреждение");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Данные сохранены", "Успешно");
+                    }
                 }
-                else
-                {
-                    MessageBox.Show("Данные сохранены", "Успешно");
-                }
+                sqlDispatcher.CloseSqlConn();
             }
-            sqlDispatcher.CloseSqlConn();
         }
     }
 }
