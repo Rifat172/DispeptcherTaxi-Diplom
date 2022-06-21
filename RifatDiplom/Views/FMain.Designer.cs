@@ -38,6 +38,7 @@ namespace RifatDiplom
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.фаилToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ListDrivers = new System.Windows.Forms.ToolStripMenuItem();
+            this.removeDriver = new System.Windows.Forms.ToolStripMenuItem();
             this.ListOrder = new System.Windows.Forms.ToolStripMenuItem();
             this.выйтиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.пользовательToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -72,7 +73,7 @@ namespace RifatDiplom
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.UpdateDriverBtn = new System.Windows.Forms.Button();
             this.UpdateOrderBtn = new System.Windows.Forms.Button();
-            this.removeDriver = new System.Windows.Forms.ToolStripMenuItem();
+            this.списокToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -116,11 +117,19 @@ namespace RifatDiplom
             this.ListDrivers.Checked = true;
             this.ListDrivers.CheckState = System.Windows.Forms.CheckState.Checked;
             this.ListDrivers.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.списокToolStripMenuItem,
             this.removeDriver});
             this.ListDrivers.Name = "ListDrivers";
             this.ListDrivers.Size = new System.Drawing.Size(224, 26);
-            this.ListDrivers.Text = "Список водителей";
+            this.ListDrivers.Text = "Водители";
             this.ListDrivers.Click += new System.EventHandler(this.ListDrivers_Click);
+            // 
+            // removeDriver
+            // 
+            this.removeDriver.Name = "removeDriver";
+            this.removeDriver.Size = new System.Drawing.Size(224, 26);
+            this.removeDriver.Text = "Уволить водителя";
+            this.removeDriver.Click += new System.EventHandler(this.уволитьВодителяToolStripMenuItem_Click);
             // 
             // ListOrder
             // 
@@ -128,7 +137,7 @@ namespace RifatDiplom
             this.ListOrder.CheckState = System.Windows.Forms.CheckState.Checked;
             this.ListOrder.Name = "ListOrder";
             this.ListOrder.Size = new System.Drawing.Size(224, 26);
-            this.ListOrder.Text = "Список заказов";
+            this.ListOrder.Text = "Заказы";
             this.ListOrder.Click += new System.EventHandler(this.ListOrder_Click);
             // 
             // выйтиToolStripMenuItem
@@ -526,12 +535,12 @@ namespace RifatDiplom
             this.UpdateOrderBtn.UseVisualStyleBackColor = true;
             this.UpdateOrderBtn.Click += new System.EventHandler(this.UpdateOrderBtn_Click);
             // 
-            // removeDriver
+            // списокToolStripMenuItem
             // 
-            this.removeDriver.Name = "removeDriver";
-            this.removeDriver.Size = new System.Drawing.Size(224, 26);
-            this.removeDriver.Text = "Уволить водителя";
-            this.removeDriver.Click += new System.EventHandler(this.уволитьВодителяToolStripMenuItem_Click);
+            this.списокToolStripMenuItem.Name = "списокToolStripMenuItem";
+            this.списокToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.списокToolStripMenuItem.Text = "Список";
+            this.списокToolStripMenuItem.Click += new System.EventHandler(this.списокToolStripMenuItem_Click);
             // 
             // FMain
             // 
@@ -606,5 +615,6 @@ namespace RifatDiplom
         private System.Windows.Forms.DataGridViewComboBoxColumn cStatus;
         private System.Windows.Forms.DataGridViewComboBoxColumn cDriver;
         private System.Windows.Forms.ToolStripMenuItem removeDriver;
+        private System.Windows.Forms.ToolStripMenuItem списокToolStripMenuItem;
     }
 }

@@ -167,7 +167,7 @@ namespace RifatDiplom
 
         SQLDriverWithStatus sqlDriver = null;
         SQLOrderWithStatus sqlOrder = null;
-        
+
         private void FMain_Load(object sender, EventArgs e)
         {
             LoadData();
@@ -183,7 +183,7 @@ namespace RifatDiplom
             sqlOrder = new SQLOrderWithStatus();
 
             LoadDriver(sqlDriver);
-            LoadOrder(sqlOrder);            
+            LoadOrder(sqlOrder);
         }
         private void LoadDriver(SQLDriverWithStatus sqlDriver)
         {
@@ -226,6 +226,60 @@ namespace RifatDiplom
 
         private void UpdateOrderBtn_Click(object sender, EventArgs e)
         {
+            var Changes = sqlOrder.OrderDS.Tables[0].GetChanges();
+            if (Changes != null)
+            {
+                foreach (DataRow OrderRow in Changes.Rows)
+                {
+                    if ((int)OrderRow["Id_OrderStatus"] == 3)
+                    {
+                        if (OrderRow["Id_Driver"] == DBNull.Value)
+                        {
+                            MessageBox.Show($"Статус указан 'Завершено', но НЕ выбран водитель", "Ошибка");
+                            OrderRow["Id_OrderStatus"] = 1;
+                            sqlOrder.OrderDS.Merge(Changes);
+                            LoadOrder(sqlOrder);
+                            dgvOrders.Refresh();
+                            return;
+                        }
+                        else
+                        {
+                            int Id_Driver = (int)OrderRow["Id_Driver"];
+                            var DriverRow = sqlDriver.DriverDS.Tables[0].Select($"Id = {Id_Driver}");
+                            foreach (DataRow Driver in DriverRow)
+                            {
+                                Driver["Pevenue"] = (int)Driver["Pevenue"] + (int)OrderRow["Price"];
+                                Driver["Id_Status"] = 1;
+                                sqlDriver.UPDATEDriver();
+                            }
+                        }
+                    }
+                    if ((int)OrderRow["Id_OrderStatus"] == 2)
+                    {
+                        if (OrderRow["Id_Driver"] == DBNull.Value)
+                        {
+                            MessageBox.Show($"Статус указан 'В пути', но НЕ выбран водитель", "Ошибка");
+                            OrderRow["Id_OrderStatus"] = 1;
+                            sqlOrder.OrderDS.Merge(Changes);
+                            LoadOrder(sqlOrder);
+                            dgvOrders.Refresh();
+                            return;
+                        }
+                        else
+                        {
+                            int Id_Driver = (int)OrderRow["Id_Driver"];
+                            var DriverRow = sqlDriver.DriverDS.Tables[0].Select($"Id = {Id_Driver}");
+                            foreach (DataRow Driver in DriverRow)
+                            {
+                                Driver["Id_Status"] = 2;
+                                sqlDriver.UPDATEDriver();
+                            }
+                        }
+                    }
+                }
+
+            }
+
             var state = sqlOrder.UPDATEOrder();
             if (state == 0)
             {
@@ -264,6 +318,12 @@ namespace RifatDiplom
             driver.ShowDialog();
             LoadDriver(sqlDriver);
             dgvDriver.Refresh();
+        }
+
+        private void списокToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form driver = new Drivers(sqlDriver);
+            driver.Show();
         }
     }
 }

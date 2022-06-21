@@ -32,12 +32,20 @@ namespace RifatDiplom
                 DataRow row = Order.OrderDS.Tables[0].NewRow();
                 Order.OrderDS.Tables[0].Rows.Add(row);
 
-                DataRowView DriverRow = (DataRowView)cbDrivers.SelectedItem;
+                DataRow DriverRow = null;
+                if ((DataRowView)cbDrivers.SelectedItem != null)
+                    DriverRow = ((DataRowView)cbDrivers.SelectedItem).Row;
+                DataRowView OrderStatus = (DataRowView)cbStatus.SelectedItem;
 
                 int Id_Driver = 0;
                 if (DriverRow != null)
                 {
                     Id_Driver = (int)DriverRow["Id"];
+                    if ((int)OrderStatus["Id"] == 2)
+                    {
+                        DriverRow["Id_Status"] = 2;
+                        Driver.UPDATEDriver();
+                    }
                 }
 
                 var state = Order.INSERTOrder(tbFrom.Text, tbTo.Text, GetPrice(), (cbStatus.SelectedIndex + 1), Id_Driver, DateTime.Now.ToString("d"), DateTime.Now.ToLongTimeString(), PhoneNumber.Text);
@@ -65,16 +73,27 @@ namespace RifatDiplom
 
         private void FAddOrder_Load(object sender, EventArgs e)
         {
-            DataView dv = new DataView(Driver.DriverDS.Tables[0]);
-            dv.RowFilter = "Id_Status = 1";
+            DataView dvDriver = new DataView(Driver.DriverDS.Tables[0]);
+            dvDriver.RowFilter = "Id_Status = 1";
+
+            DataView dvStatus = new DataView(Order.StatusDS.Tables[0]);
 
             cbDrivers.DisplayMember = "NickName";
             cbDrivers.ValueMember = "Id";
-            cbDrivers.DataSource = dv;
+            cbDrivers.DataSource = dvDriver;
 
             cbStatus.DisplayMember = "Status";
             cbStatus.ValueMember = "Id";
-            cbStatus.DataSource = Order.StatusDS.Tables[0];
+            if (dvDriver.Count > 0)
+            {
+                dvStatus.RowFilter = "Id = 1 OR Id = 2 OR Id = 4";
+                cbStatus.DataSource = dvStatus;
+            }
+            else
+            {
+                dvStatus.RowFilter = "Id = 1 OR Id = 4";
+                cbStatus.DataSource = dvStatus;
+            }
         }
 
         private bool CheckValidDate()

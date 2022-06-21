@@ -30,7 +30,10 @@ namespace RifatDiplom.Views
         private void btnEdit_Click(object sender, EventArgs e)
         {
             DataRowView SelectedUser = (DataRowView)CBDriver.SelectedItem;
-            sqlDriver.DELETEDriver(SelectedUser);
+            if (SelectedUser != null)
+                sqlDriver.DELETEDriver(SelectedUser);
+            else
+                MessageBox.Show("Необходимо выбрать сотрудника или его нет в базе данных", "Предупреждение");
         }
     }
 }

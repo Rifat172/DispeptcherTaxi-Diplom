@@ -36,6 +36,7 @@ namespace RifatDiplom
             this.tbPassword = new System.Windows.Forms.TextBox();
             this.bsubmit = new System.Windows.Forms.Button();
             this.WarningL = new System.Windows.Forms.Label();
+            this.checkB = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // LLogin
@@ -52,7 +53,7 @@ namespace RifatDiplom
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(88, 166);
+            this.label1.Location = new System.Drawing.Point(88, 145);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(108, 31);
             this.label1.TabIndex = 1;
@@ -70,7 +71,7 @@ namespace RifatDiplom
             // tbPassword
             // 
             this.tbPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.tbPassword.Location = new System.Drawing.Point(95, 201);
+            this.tbPassword.Location = new System.Drawing.Point(95, 180);
             this.tbPassword.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbPassword.Name = "tbPassword";
             this.tbPassword.PasswordChar = '*';
@@ -103,6 +104,17 @@ namespace RifatDiplom
             this.WarningL.Text = "Не верно введен логин или пароль";
             this.WarningL.Visible = false;
             // 
+            // checkB
+            // 
+            this.checkB.AutoSize = true;
+            this.checkB.Location = new System.Drawing.Point(94, 224);
+            this.checkB.Name = "checkB";
+            this.checkB.Size = new System.Drawing.Size(141, 21);
+            this.checkB.TabIndex = 7;
+            this.checkB.Text = "показать пароль";
+            this.checkB.UseVisualStyleBackColor = true;
+            this.checkB.CheckedChanged += new System.EventHandler(this.checkB_CheckedChanged);
+            // 
             // FSignIn
             // 
             this.AcceptButton = this.bsubmit;
@@ -110,6 +122,7 @@ namespace RifatDiplom
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Ivory;
             this.ClientSize = new System.Drawing.Size(512, 329);
+            this.Controls.Add(this.checkB);
             this.Controls.Add(this.WarningL);
             this.Controls.Add(this.bsubmit);
             this.Controls.Add(this.tbPassword);
@@ -136,6 +149,7 @@ namespace RifatDiplom
         private System.Windows.Forms.TextBox tbPassword;
         private System.Windows.Forms.Button bsubmit;
         private System.Windows.Forms.Label WarningL;
+        private System.Windows.Forms.CheckBox checkB;
     }
 }
 

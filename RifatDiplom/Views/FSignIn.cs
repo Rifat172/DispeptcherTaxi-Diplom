@@ -58,5 +58,13 @@ namespace RifatDiplom
                 this.Hide();
             }
         }
+
+        private void checkB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkB.Checked)
+                tbPassword.PasswordChar = '\0';
+            else
+                tbPassword.PasswordChar = '*';
+        }
     }
 }
