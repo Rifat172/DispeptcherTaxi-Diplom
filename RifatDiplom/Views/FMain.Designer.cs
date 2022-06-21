@@ -72,6 +72,7 @@ namespace RifatDiplom
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.UpdateDriverBtn = new System.Windows.Forms.Button();
             this.UpdateOrderBtn = new System.Windows.Forms.Button();
+            this.removeDriver = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -114,6 +115,8 @@ namespace RifatDiplom
             // 
             this.ListDrivers.Checked = true;
             this.ListDrivers.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.ListDrivers.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.removeDriver});
             this.ListDrivers.Name = "ListDrivers";
             this.ListDrivers.Size = new System.Drawing.Size(224, 26);
             this.ListDrivers.Text = "Список водителей";
@@ -147,14 +150,14 @@ namespace RifatDiplom
             // профильToolStripMenuItem
             // 
             this.профильToolStripMenuItem.Name = "профильToolStripMenuItem";
-            this.профильToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.профильToolStripMenuItem.Size = new System.Drawing.Size(156, 26);
             this.профильToolStripMenuItem.Text = "Профиль";
             this.профильToolStripMenuItem.Click += new System.EventHandler(this.профильToolStripMenuItem_Click);
             // 
             // выйтиToolStripMenuItem2
             // 
             this.выйтиToolStripMenuItem2.Name = "выйтиToolStripMenuItem2";
-            this.выйтиToolStripMenuItem2.Size = new System.Drawing.Size(224, 26);
+            this.выйтиToolStripMenuItem2.Size = new System.Drawing.Size(156, 26);
             this.выйтиToolStripMenuItem2.Text = "Выйти";
             this.выйтиToolStripMenuItem2.Click += new System.EventHandler(this.выйтиToolStripMenuItem2_Click);
             // 
@@ -194,7 +197,7 @@ namespace RifatDiplom
             // оПрограммеToolStripMenuItem
             // 
             this.оПрограммеToolStripMenuItem.Name = "оПрограммеToolStripMenuItem";
-            this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(187, 26);
             this.оПрограммеToolStripMenuItem.Text = "О программе";
             this.оПрограммеToolStripMenuItem.Click += new System.EventHandler(this.оПрограммеToolStripMenuItem_Click);
             // 
@@ -523,6 +526,13 @@ namespace RifatDiplom
             this.UpdateOrderBtn.UseVisualStyleBackColor = true;
             this.UpdateOrderBtn.Click += new System.EventHandler(this.UpdateOrderBtn_Click);
             // 
+            // removeDriver
+            // 
+            this.removeDriver.Name = "removeDriver";
+            this.removeDriver.Size = new System.Drawing.Size(224, 26);
+            this.removeDriver.Text = "Уволить водителя";
+            this.removeDriver.Click += new System.EventHandler(this.уволитьВодителяToolStripMenuItem_Click);
+            // 
             // FMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -535,7 +545,7 @@ namespace RifatDiplom
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FMain";
-            this.Text = "Диспетчерская";
+            this.Text = "Рабочее место диспетчера";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FMain_FormClosing);
             this.Load += new System.EventHandler(this.FMain_Load);
             this.menuStrip1.ResumeLayout(false);
@@ -595,5 +605,6 @@ namespace RifatDiplom
         private System.Windows.Forms.DataGridViewTextBoxColumn cPrice;
         private System.Windows.Forms.DataGridViewComboBoxColumn cStatus;
         private System.Windows.Forms.DataGridViewComboBoxColumn cDriver;
+        private System.Windows.Forms.ToolStripMenuItem removeDriver;
     }
 }

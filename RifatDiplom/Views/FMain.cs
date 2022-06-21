@@ -19,9 +19,15 @@ namespace RifatDiplom
             {
                 DataRow RowStatus = _disp.SELECTDispatcher(Id).Rows[0];
                 if ((string)RowStatus["Status"] == "Admin")
+                {
                     addUser.Visible = true;
+                    removeDriver.Visible = true;
+                }
                 else
+                {
                     addUser.Visible = false;
+                    removeDriver.Visible = false;
+                }
                 _disp.CloseSqlConn();
             }
             _disp.CloseSqlConn();
@@ -250,6 +256,14 @@ namespace RifatDiplom
             LoadOrder(sqlOrder);
             dgvDriver.Refresh();
             dgvOrders.Refresh();
+        }
+
+        private void уволитьВодителяToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form driver = new RemoveDriver(sqlDriver);
+            driver.ShowDialog();
+            LoadDriver(sqlDriver);
+            dgvDriver.Refresh();
         }
     }
 }

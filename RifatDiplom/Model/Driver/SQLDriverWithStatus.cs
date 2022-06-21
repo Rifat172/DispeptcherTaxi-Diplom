@@ -40,7 +40,7 @@ namespace RifatDiplom.Model.Driver
         }
         public DataTable SELECTDriver()
         {
-            string command = "SELECT * FROM Drivers";
+            string command = "SET CONCAT_NULL_YIELDS_NULL OFF; SELECT FirstName +' ' + SecondName + ' ' + ThirdName as FIO, * FROM Drivers; SET CONCAT_NULL_YIELDS_NULL ON;";
             DriverAd = new SqlDataAdapter(command, sqlConnection);
             DriverDS = new DataSet();
             DriverAd.Fill(DriverDS);
@@ -98,6 +98,19 @@ namespace RifatDiplom.Model.Driver
 
             state = DriverAd.Update(DriverDS, DriverDS.Tables[0].TableName);
 
+            return state;
+        }
+
+        public int DELETEDriver(DataRowView row)
+        {
+            row.Row.Delete();
+
+            int state = 0;
+            SqlCommandBuilder commandBuilder = new SqlCommandBuilder(DriverAd);
+            //DriverAd.DeleteCommand = new SqlCommand("DELETE FROM [Drivers] WHERE Id = @Id");
+            //DriverAd.DeleteCommand.Parameters.Add("@Id", SqlDbType.Int);
+            //DriverAd.DeleteCommand.Parameters["@Id"].Value = Id;
+            state = DriverAd.Update(DriverDS, DriverDS.Tables[0].TableName);
             return state;
         }
 
